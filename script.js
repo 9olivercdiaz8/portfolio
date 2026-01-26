@@ -95,17 +95,25 @@ function setupThemeToggle() {
     });
 }
 
-// ========== PI STATS (Simulated) ==========
-function updatePiStats() {
-    const uptimeDays = Math.floor(Math.random() * 30) + 1;
-    const uptimeHours = Math.floor(Math.random() * 24);
-    const temp = (40 + Math.random() * 15).toFixed(1);
-    const memory = Math.floor(30 + Math.random() * 40);
+// ========== PI STATS (Real API) ==========
+async function updatePiStats() {
+    try {
+        const response = await fetch('https://api.olivercdiaz.com/api/stats');
+        const data = await response.json();
 
-    document.getElementById('pi-uptime').textContent = `${uptimeDays}d ${uptimeHours}h`;
-    document.getElementById('pi-temp').textContent = `${temp}°C`;
-    document.getElementById('pi-memory').textContent = `${memory}%`;
+        document.getElementById('pi-status').textContent = 'ONLINE';
+        document.getElementById('pi-status').classList.add('online');
+        document.getElementById('pi-uptime').textContent = data.uptime;
+        document.getElementById('pi-temp').textContent = `${data.temp}°C`;
+        document.getElementById('pi-memory').textContent = `${data.memory}%`;
+    } catch (error) {
+        document.getElementById('pi-status').textContent = 'OFFLINE';
+        document.getElementById('pi-status').classList.remove('online');
+    }
 }
+
+// Update stats every 30 seconds
+setInterval(updatePiStats, 30000);
 
 // ========== TYPING EFFECT ==========
 function typeWriter() {
