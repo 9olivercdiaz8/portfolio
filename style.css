@@ -1,0 +1,397 @@
+/* ========== VARIABLES ========== */
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #12121a;
+    --bg-card: #16161f;
+    --text-primary: #e4e4e7;
+    --text-secondary: #a1a1aa;
+    --accent-primary: #22d3ee;
+    --accent-secondary: #a855f7;
+    --accent-tertiary: #34d399;
+    --status-online: #22c55e;
+    --status-pending: #f59e0b;
+    --border-color: #27272a;
+    --pixel-font: 'Press Start 2P', cursive;
+    --body-font: 'Inter', -apple-system, sans-serif;
+}
+
+/* ========== RESET & BASE ========== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body-font);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ========== PIXEL BACKGROUND ========== */
+#pixels {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+}
+
+/* ========== MAIN CONTAINER ========== */
+main {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1, h2, h3 {
+    font-family: var(--pixel-font);
+    font-weight: normal;
+}
+
+h1 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: clamp(0.7rem, 2vw, 0.9rem);
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+h3 {
+    font-size: 0.75rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+/* ========== SECTIONS ========== */
+section {
+    margin-bottom: 4rem;
+}
+
+/* ========== HERO ========== */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.avatar {
+    margin-bottom: 2rem;
+}
+
+.pixel-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 3px solid var(--border-color);
+    border-radius: 4px;
+    position: relative;
+    image-rendering: pixelated;
+    /* Pixel art avatar usando gradientes */
+    background:
+        /* Hair */
+        linear-gradient(var(--accent-secondary), var(--accent-secondary)) 30px 15px / 60px 25px no-repeat,
+        /* Face */
+        linear-gradient(#fbbf24, #fbbf24) 35px 35px / 50px 45px no-repeat,
+        /* Eyes */
+        linear-gradient(var(--bg-primary), var(--bg-primary)) 45px 50px / 10px 10px no-repeat,
+        linear-gradient(var(--bg-primary), var(--bg-primary)) 65px 50px / 10px 10px no-repeat,
+        /* Smile */
+        linear-gradient(var(--bg-primary), var(--bg-primary)) 50px 70px / 20px 5px no-repeat,
+        /* Shirt */
+        linear-gradient(var(--accent-primary), var(--accent-primary)) 30px 85px / 60px 35px no-repeat,
+        /* Background */
+        var(--bg-card);
+    box-shadow:
+        0 0 0 3px var(--bg-primary),
+        0 0 0 6px var(--accent-primary),
+        0 0 30px rgba(34, 211, 238, 0.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-card);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--status-online);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+}
+
+/* ========== ABOUT ========== */
+.about p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    max-width: 600px;
+}
+
+/* ========== PROJECTS ========== */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 40px rgba(34, 211, 238, 0.1);
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
+}
+
+.project-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+.pixel-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--accent-primary);
+}
+
+.project-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag {
+    font-family: var(--pixel-font);
+    font-size: 0.5rem;
+    padding: 0.35rem 0.6rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+}
+
+.project-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-family: var(--pixel-font);
+}
+
+.project-status.online {
+    color: var(--status-online);
+}
+
+.project-status.online .status-dot {
+    background: var(--status-online);
+}
+
+.project-status.pending {
+    color: var(--status-pending);
+}
+
+.project-status.pending .status-dot {
+    background: var(--status-pending);
+    animation: none;
+}
+
+.project-card.coming-soon {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+.project-card.coming-soon:hover {
+    opacity: 0.8;
+}
+
+/* ========== CONTACT ========== */
+.contact-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    border-color: var(--accent-primary);
+    background: var(--bg-secondary);
+    transform: translateY(-2px);
+}
+
+.contact-link .pixel-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-link span {
+    font-family: var(--pixel-font);
+    font-size: 0.65rem;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+footer p {
+    font-family: var(--pixel-font);
+    font-size: 0.6rem;
+    color: var(--text-secondary);
+}
+
+.footer-year {
+    margin-top: 0.5rem;
+    opacity: 0.5;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero {
+        padding: 2rem 0;
+    }
+
+    .pixel-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-links {
+        flex-direction: column;
+    }
+
+    .contact-link {
+        justify-content: center;
+    }
+}
+
+/* ========== SELECTION ========== */
+::selection {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
