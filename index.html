@@ -9,8 +9,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-theme="dark">
     <canvas id="pixels"></canvas>
+
+    <!-- Theme & Music Toggle -->
+    <div class="controls">
+        <button id="theme-toggle" class="control-btn" title="Cambiar tema">
+            <span class="icon-sun">☀</span>
+            <span class="icon-moon">☾</span>
+        </button>
+        <button id="music-toggle" class="control-btn" title="Música 8-bit">
+            <span class="icon-music-on">♪</span>
+            <span class="icon-music-off">✕</span>
+        </button>
+    </div>
 
     <main>
         <!-- Hero -->
@@ -35,6 +47,94 @@
                 infraestructura de red. Me gusta automatizar cosas,
                 cacharrear con hardware y aprender haciendo.
             </p>
+        </section>
+
+        <!-- Skills -->
+        <section class="skills">
+            <h2>// skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-level">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-level="85"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Linux</span>
+                        <span class="skill-level">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-level="80"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Networking</span>
+                        <span class="skill-level">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-level="75"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-level">70%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-level="70"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Docker</span>
+                        <span class="skill-level">65%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-level="65"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Bash</span>
+                        <span class="skill-level">75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-level="75"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pi Stats -->
+        <section class="pi-stats">
+            <h2>// raspberry pi</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-icon">⚡</span>
+                    <span class="stat-label">Status</span>
+                    <span class="stat-value online" id="pi-status">ONLINE</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">⏱</span>
+                    <span class="stat-label">Uptime</span>
+                    <span class="stat-value" id="pi-uptime">--d --h</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">🌡</span>
+                    <span class="stat-label">Temp</span>
+                    <span class="stat-value" id="pi-temp">--°C</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-icon">💾</span>
+                    <span class="stat-label">Memory</span>
+                    <span class="stat-value" id="pi-memory">--%</span>
+                </div>
+            </div>
         </section>
 
         <!-- Projects -->
@@ -127,6 +227,54 @@
             </div>
         </section>
 
+        <!-- Blog -->
+        <section class="blog">
+            <h2>// blog</h2>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <span class="blog-date">26 ENE 2026</span>
+                    <h3>Montando mi servidor VPN casero</h3>
+                    <p>Cómo configuré WireGuard en una Raspberry Pi para acceder a mi red desde cualquier lugar.</p>
+                    <div class="blog-tags">
+                        <span class="tag">VPN</span>
+                        <span class="tag">Tutorial</span>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <span class="blog-date">25 ENE 2026</span>
+                    <h3>Bot de Telegram para gestionar la Pi</h3>
+                    <p>Creando un bot que me permite controlar mi servidor desde el móvil.</p>
+                    <div class="blog-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Telegram</span>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <span class="blog-date">24 ENE 2026</span>
+                    <h3>DNS dinámico con DuckDNS</h3>
+                    <p>Configurando actualización automática de DNS para IP dinámica.</p>
+                    <div class="blog-tags">
+                        <span class="tag">DNS</span>
+                        <span class="tag">Automation</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Mini Game -->
+        <section class="game-section">
+            <h2>// easter egg</h2>
+            <p class="game-hint">¿Te aburres? Juega al Snake</p>
+            <div class="game-container">
+                <canvas id="snake-game"></canvas>
+                <div class="game-overlay" id="game-overlay">
+                    <p>Pulsa SPACE o toca para jugar</p>
+                    <p class="game-score">High Score: <span id="high-score">0</span></p>
+                </div>
+            </div>
+            <p class="game-controls">Controles: WASD o flechas | Móvil: swipe</p>
+        </section>
+
         <!-- Contact -->
         <section class="contact">
             <h2>// contact</h2>
@@ -148,6 +296,13 @@
                         <path d="M8 1C4.13 1 1 4.13 1 8c0 3.09 2 5.71 4.78 6.64.35.06.48-.15.48-.34 0-.17-.01-.61-.01-1.2-1.95.42-2.36-.94-2.36-.94-.32-.81-.78-1.03-.78-1.03-.64-.43.05-.43.05-.43.7.05 1.07.72 1.07.72.62 1.07 1.64.76 2.04.58.06-.45.24-.76.44-.94-1.56-.18-3.2-.78-3.2-3.47 0-.77.28-1.4.72-1.89-.07-.18-.31-.89.07-1.86 0 0 .59-.19 1.93.72a6.7 6.7 0 0 1 1.76-.24c.6 0 1.2.08 1.76.24 1.34-.91 1.93-.72 1.93-.72.38.97.14 1.68.07 1.86.45.49.72 1.12.72 1.89 0 2.7-1.64 3.29-3.21 3.46.25.22.48.65.48 1.31 0 .94-.01 1.7-.01 1.93 0 .19.13.41.49.34C13 13.71 15 11.09 15 8c0-3.87-3.13-7-7-7z" fill="currentColor"/>
                     </svg>
                     <span>GitHub</span>
+                </a>
+                <a href="mailto:oliver@olivercdiaz.com" class="contact-link">
+                    <svg viewBox="0 0 16 16" class="pixel-icon">
+                        <rect x="1" y="3" width="14" height="10" fill="none" stroke="currentColor" stroke-width="1"/>
+                        <polyline points="1,3 8,9 15,3" fill="none" stroke="currentColor" stroke-width="1"/>
+                    </svg>
+                    <span>Email</span>
                 </a>
             </div>
         </section>
