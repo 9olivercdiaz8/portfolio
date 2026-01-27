@@ -1,4 +1,3 @@
-// ========== PIXEL BACKGROUND ==========
 const canvas = document.getElementById('pixels');
 const ctx = canvas.getContext('2d');
 
@@ -70,7 +69,7 @@ function animateParticles() {
     requestAnimationFrame(animateParticles);
 }
 
-// ========== LANGUAGE TOGGLE ==========
+// i18n
 const translations = {
     en: {
         pageTitle: "Oliver C. Díaz | IT & Network Specialist",
@@ -171,10 +170,10 @@ function setLanguage(lang) {
         if (t[key]) el.textContent = t[key];
     });
 
-    document.querySelectorAll('[data-i18n-title]').forEach(el => {
-        const key = el.getAttribute('data-i18n-title');
-        if (t[key]) document.title = t[key];
-    });
+    const titleKey = document.querySelector('[data-i18n-title]');
+    if (titleKey && t[titleKey.getAttribute('data-i18n-title')]) {
+        document.title = t[titleKey.getAttribute('data-i18n-title')];
+    }
 
     const langBtn = document.querySelector('.lang-text');
     if (langBtn) langBtn.textContent = lang === 'en' ? 'ES' : 'EN';
@@ -183,152 +182,117 @@ function setLanguage(lang) {
 function setupLangToggle() {
     const btn = document.getElementById('lang-toggle');
     if (!btn) return;
-
     setLanguage(currentLang);
-
-    btn.addEventListener('click', () => {
-        setLanguage(currentLang === 'en' ? 'es' : 'en');
-    });
+    btn.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'es' : 'en'));
 }
 
-// ========== THEME TOGGLE ==========
 function setupThemeToggle() {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
-
     btn.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        const next = current === 'dark' ? 'light' : 'dark';
+        const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
     });
 }
 
-// ========== PI STATS (Real API) ==========
+// Pi stats
+function $(id) { return document.getElementById(id); }
+
 async function updatePiStats() {
     try {
-        const response = await fetch('https://api.olivercdiaz.com/api/stats');
-        const data = await response.json();
+        const res = await fetch('https://api.olivercdiaz.com/api/stats');
+        const d = await res.json();
 
-        document.getElementById('pi-status').textContent = 'ONLINE';
-        document.getElementById('pi-status').classList.add('online');
-        document.getElementById('pi-uptime').textContent = data.uptime;
-        document.getElementById('pi-temp').textContent = `${data.temp}°C`;
-        document.getElementById('pi-memory').textContent = `${data.memory}%`;
-        document.getElementById('wg-peers').textContent = data.peers || 0;
+        $('pi-status').textContent = 'ONLINE';
+        $('pi-status').classList.add('online');
+        $('pi-uptime').textContent = d.uptime;
+        $('pi-temp').textContent = d.temp + '°C';
+        $('pi-memory').textContent = d.memory + '%';
+        $('wg-peers').textContent = d.peers || 0;
+        $('pi-pihole-blocked').textContent = (d.pihole_blocked || 0).toLocaleString();
+        $('pi-pihole-percent').textContent = (d.pihole_percent || 0) + '%';
 
-        // Pi-hole stats
-        document.getElementById('pi-pihole-blocked').textContent = (data.pihole_blocked || 0).toLocaleString();
-        document.getElementById('pi-pihole-percent').textContent = `${data.pihole_percent || 0}%`;
-        const domains = data.pihole_domains || 0;
-        document.getElementById('pi-pihole-domains').textContent = domains >= 1000 ? `${Math.round(domains / 1000)}K` : domains;
+        const domains = d.pihole_domains || 0;
+        $('pi-pihole-domains').textContent = domains >= 1000 ? Math.round(domains / 1000) + 'K' : domains;
 
-        // Guardar último estado conocido
         localStorage.setItem('piStats', JSON.stringify({
-            uptime: data.uptime,
-            temp: data.temp,
-            memory: data.memory,
-            peers: data.peers || 0,
-            pihole_blocked: data.pihole_blocked || 0,
-            pihole_percent: data.pihole_percent || 0,
-            pihole_domains: data.pihole_domains || 0,
-            timestamp: Date.now()
+            uptime: d.uptime, temp: d.temp, memory: d.memory,
+            peers: d.peers || 0, pihole_blocked: d.pihole_blocked || 0,
+            pihole_percent: d.pihole_percent || 0, pihole_domains: d.pihole_domains || 0
         }));
-    } catch (error) {
-        document.getElementById('pi-status').textContent = 'OFFLINE';
-        document.getElementById('pi-status').classList.remove('online');
+    } catch {
+        $('pi-status').textContent = 'OFFLINE';
+        $('pi-status').classList.remove('online');
 
-        // Mostrar último estado conocido
-        const lastStats = localStorage.getItem('piStats');
-        if (lastStats) {
-            const data = JSON.parse(lastStats);
-            document.getElementById('pi-uptime').textContent = `${data.uptime}*`;
-            document.getElementById('pi-temp').textContent = `${data.temp}°C*`;
-            document.getElementById('pi-memory').textContent = `${data.memory}%*`;
-            document.getElementById('wg-peers').textContent = `${data.peers}*`;
-            document.getElementById('pi-pihole-blocked').textContent = `${(data.pihole_blocked || 0).toLocaleString()}*`;
-            document.getElementById('pi-pihole-percent').textContent = `${data.pihole_percent || 0}%*`;
-            const domains = data.pihole_domains || 0;
-            document.getElementById('pi-pihole-domains').textContent = domains >= 1000 ? `${Math.round(domains / 1000)}K*` : `${domains}*`;
-        }
+        const cached = localStorage.getItem('piStats');
+        if (!cached) return;
+        const d = JSON.parse(cached);
+
+        $('pi-uptime').textContent = d.uptime + '*';
+        $('pi-temp').textContent = d.temp + '°C*';
+        $('pi-memory').textContent = d.memory + '%*';
+        $('wg-peers').textContent = d.peers + '*';
+        $('pi-pihole-blocked').textContent = (d.pihole_blocked || 0).toLocaleString() + '*';
+        $('pi-pihole-percent').textContent = (d.pihole_percent || 0) + '%*';
+
+        const domains = d.pihole_domains || 0;
+        $('pi-pihole-domains').textContent = (domains >= 1000 ? Math.round(domains / 1000) + 'K' : domains) + '*';
     }
 }
 
-// Update stats every 30 seconds
 setInterval(updatePiStats, 30000);
 
-// ========== TYPING EFFECT ==========
+// Typing effect
 function typeWriter() {
-    const tagline = document.querySelector('.tagline');
-    if (!tagline) return;
+    const el = document.querySelector('.tagline');
+    if (!el) return;
 
-    const text = tagline.textContent;
-    tagline.textContent = '';
-    tagline.style.borderRight = '2px solid var(--accent-primary)';
+    const text = el.textContent;
+    el.textContent = '';
+    el.style.borderRight = '2px solid var(--accent-primary)';
 
     let i = 0;
-    function type() {
+    (function type() {
         if (i < text.length) {
-            tagline.textContent += text.charAt(i);
-            i++;
+            el.textContent += text.charAt(i++);
             setTimeout(type, 50);
         } else {
-            setTimeout(() => {
-                tagline.style.borderRight = 'none';
-            }, 2000);
+            setTimeout(() => { el.style.borderRight = 'none'; }, 2000);
         }
-    }
-
-    setTimeout(type, 500);
+    })();
 }
 
-// ========== KONAMI CODE ==========
-let konamiCode = [];
-const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+// Konami
+let konamiBuffer = [];
+const konamiSeq = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
 
 document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.key);
-    konamiCode = konamiCode.slice(-10);
+    konamiBuffer.push(e.key);
+    konamiBuffer = konamiBuffer.slice(-10);
+    if (konamiBuffer.join(',') !== konamiSeq.join(',')) return;
 
-    if (konamiCode.join(',') === konami.join(',')) {
-        document.body.style.animation = 'rainbow 2s linear infinite';
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes rainbow {
-                0% { filter: hue-rotate(0deg); }
-                100% { filter: hue-rotate(360deg); }
-            }
-        `;
-        document.head.appendChild(style);
-
-        setTimeout(() => {
-            document.body.style.animation = '';
-        }, 5000);
-    }
+    document.body.style.animation = 'rainbow 2s linear infinite';
+    const s = document.createElement('style');
+    s.textContent = '@keyframes rainbow { 0% { filter: hue-rotate(0deg); } 100% { filter: hue-rotate(360deg); } }';
+    document.head.appendChild(s);
+    setTimeout(() => { document.body.style.animation = ''; }, 5000);
 });
 
-// ========== BACK TO TOP ==========
+// Back to top
 function setupBackToTop() {
     const btn = document.getElementById('back-to-top');
     if (!btn) return;
-
-    window.addEventListener('scroll', () => {
-        btn.classList.toggle('visible', window.scrollY > 400);
-    });
-
-    btn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
+    btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-// ========== INIT ==========
-// Apply theme + language ASAP (before fonts/images load)
+// Init
 document.addEventListener('DOMContentLoaded', () => {
     setupThemeToggle();
     setupLangToggle();
     setupBackToTop();
 
-    // Reveal page after theme + language are applied
     document.documentElement.classList.remove('loading');
     document.documentElement.classList.add('ready');
 
@@ -336,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
     typeWriter();
 });
 
-// Canvas needs full window dimensions, so wait for load
 window.addEventListener('load', () => {
     resize();
     initParticles();
