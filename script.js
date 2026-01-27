@@ -107,9 +107,28 @@ async function updatePiStats() {
         document.getElementById('pi-temp').textContent = `${data.temp}°C`;
         document.getElementById('pi-memory').textContent = `${data.memory}%`;
         document.getElementById('wg-peers').textContent = data.peers || 0;
+
+        // Guardar último estado conocido
+        localStorage.setItem('piStats', JSON.stringify({
+            uptime: data.uptime,
+            temp: data.temp,
+            memory: data.memory,
+            peers: data.peers || 0,
+            timestamp: Date.now()
+        }));
     } catch (error) {
         document.getElementById('pi-status').textContent = 'OFFLINE';
         document.getElementById('pi-status').classList.remove('online');
+
+        // Mostrar último estado conocido
+        const lastStats = localStorage.getItem('piStats');
+        if (lastStats) {
+            const data = JSON.parse(lastStats);
+            document.getElementById('pi-uptime').textContent = `${data.uptime}*`;
+            document.getElementById('pi-temp').textContent = `${data.temp}°C*`;
+            document.getElementById('pi-memory').textContent = `${data.memory}%*`;
+            document.getElementById('wg-peers').textContent = `${data.peers}*`;
+        }
     }
 }
 
