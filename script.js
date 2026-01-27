@@ -306,11 +306,8 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ========== INIT ==========
-window.addEventListener('load', () => {
-    resize();
-    initParticles();
-    animateParticles();
-
+// Apply theme + language ASAP (before fonts/images load)
+document.addEventListener('DOMContentLoaded', () => {
     setupThemeToggle();
     setupLangToggle();
 
@@ -320,6 +317,13 @@ window.addEventListener('load', () => {
 
     updatePiStats();
     typeWriter();
+});
+
+// Canvas needs full window dimensions, so wait for load
+window.addEventListener('load', () => {
+    resize();
+    initParticles();
+    animateParticles();
 });
 
 window.addEventListener('resize', resize);
