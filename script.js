@@ -106,6 +106,10 @@ async function updatePiStats() {
         document.getElementById('pi-uptime').textContent = data.uptime;
         document.getElementById('pi-temp').textContent = `${data.temp}°C`;
         document.getElementById('pi-memory').textContent = `${data.memory}%`;
+
+        if (data.peers !== undefined) {
+            document.getElementById('wg-peers').textContent = data.peers;
+        }
     } catch (error) {
         document.getElementById('pi-status').textContent = 'OFFLINE';
         document.getElementById('pi-status').classList.remove('online');
