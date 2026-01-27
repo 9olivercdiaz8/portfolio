@@ -243,6 +243,22 @@ async function updatePiStats() {
 
 setInterval(updatePiStats, 30000);
 
+// Typing effect (no cursor)
+function typeWriter() {
+    const el = document.querySelector('.tagline');
+    if (!el) return;
+
+    const text = el.textContent;
+    el.textContent = '';
+
+    let i = 0;
+    (function type() {
+        if (i < text.length) {
+            el.textContent += text.charAt(i++);
+            setTimeout(type, 50);
+        }
+    })();
+}
 
 // Konami
 let konamiBuffer = [];
@@ -278,6 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.classList.add('ready');
 
     updatePiStats();
+    typeWriter();
 });
 
 window.addEventListener('load', () => {
