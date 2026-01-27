@@ -17,13 +17,39 @@
 
 /* Light theme */
 [data-theme="light"] {
-    --bg-primary: #f4f4f5;
-    --bg-secondary: #e4e4e7;
+    --bg-primary: #f8f9fc;
+    --bg-secondary: #eef0f5;
     --bg-card: #ffffff;
-    --text-primary: #18181b;
-    --text-secondary: #52525b;
-    --border-color: #d4d4d8;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a4a6a;
+    --accent-primary: #0891b2;
+    --accent-secondary: #7c3aed;
+    --accent-tertiary: #059669;
+    --border-color: #d1d5e0;
 }
+
+[data-theme="light"] .project-card,
+[data-theme="light"] .skill-item,
+[data-theme="light"] .cert-item,
+[data-theme="light"] .contact-link,
+[data-theme="light"] .stats-grid,
+[data-theme="light"] .status {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .project-card:hover {
+    box-shadow: 0 8px 25px rgba(8, 145, 178, 0.12);
+}
+
+[data-theme="light"] h1 {
+    background: linear-gradient(135deg, #0891b2, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track { background: #f0f0f5; }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #c0c4d0; }
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: #0891b2; }
 
 /* ========== RESET & BASE ========== */
 *, *::before, *::after {
@@ -74,6 +100,13 @@ body {
 .control-btn:hover {
     border-color: var(--accent-primary);
     transform: scale(1.05);
+}
+
+/* Language toggle */
+.lang-text {
+    font-family: var(--pixel-font);
+    font-size: 0.5rem;
+    color: var(--text-primary);
 }
 
 /* Theme toggle icons */

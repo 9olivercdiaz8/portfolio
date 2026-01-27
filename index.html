@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oliver C. Díaz | IT & Network Specialist</title>
+    <title data-i18n-title="pageTitle">Oliver C. Díaz | IT & Network Specialist</title>
     <meta name="description" content="IT professional specializing in networks, systems administration, and infrastructure. Based in Barcelona.">
     <meta property="og:title" content="Oliver C. Díaz | IT & Network Specialist">
     <meta property="og:description" content="IT professional specializing in networks, systems administration, and infrastructure. Based in Barcelona.">
@@ -23,6 +23,9 @@
 
     <!-- Theme Toggle -->
     <div class="controls">
+        <button id="lang-toggle" class="control-btn" aria-label="Change language">
+            <span class="lang-text">EN</span>
+        </button>
         <button id="theme-toggle" class="control-btn" aria-label="Toggle theme">
             <span class="icon-sun">&#9728;</span>
             <span class="icon-moon">&#9790;</span>
@@ -36,18 +39,18 @@
                 <div class="pixel-avatar"></div>
             </div>
             <h1>Oliver C. Díaz</h1>
-            <p class="tagline">IT & Network Specialist</p>
-            <p class="location">Barcelona, Spain</p>
+            <p class="tagline" data-i18n="tagline">IT & Network Specialist</p>
+            <p class="location" data-i18n="location">Barcelona, Spain</p>
             <div class="status">
                 <span class="status-dot"></span>
-                <span>Available for opportunities</span>
+                <span data-i18n="status">Available for opportunities</span>
             </div>
         </section>
 
         <!-- About -->
         <section class="about">
-            <h2>// about</h2>
-            <p>
+            <h2 data-i18n="aboutTitle">// about</h2>
+            <p data-i18n="aboutText">
                 I fix networks, automate what I can, and build the rest from scratch.
                 From managing hotel infrastructure to running my own homelab with VPNs, bots, and self-hosted services —
                 I like systems that work and stay working.
@@ -56,30 +59,30 @@
 
         <!-- Experience -->
         <section class="experience">
-            <h2>// experience</h2>
+            <h2 data-i18n="expTitle">// experience</h2>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-date" data-i18n="expDate1">2024 - Present</div>
                     <div class="timeline-content">
-                        <h3>Helpdesk Agent</h3>
+                        <h3 data-i18n="expRole1">Helpdesk Agent</h3>
                         <span class="company">IRIUM</span>
-                        <p>On-site and remote support for the Department of Education of Catalonia. L1 incident resolution and escalation.</p>
+                        <p data-i18n="expDesc1">On-site and remote support for the Department of Education of Catalonia. L1 incident resolution and escalation.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2023 - 2024</div>
                     <div class="timeline-content">
-                        <h3>IT Technician</h3>
+                        <h3 data-i18n="expRole2">IT Technician</h3>
                         <span class="company">Netland SL</span>
-                        <p>Managed networks for 8+ hotels. Reduced internet costs by 20% through bandwidth optimization. Decreased incident resolution time by 25%.</p>
+                        <p data-i18n="expDesc2">Managed networks for 8+ hotels. Reduced internet costs by 20% through bandwidth optimization. Decreased incident resolution time by 25%.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2021 - 2022</div>
                     <div class="timeline-content">
-                        <h3>IT Technician</h3>
+                        <h3 data-i18n="expRole3">IT Technician</h3>
                         <span class="company">Plasticband</span>
-                        <p>Optimized Active Directory and VMware environments. Reduced service downtime by 10% through preventive maintenance.</p>
+                        <p data-i18n="expDesc3">Optimized Active Directory and VMware environments. Reduced service downtime by 10% through preventive maintenance.</p>
                     </div>
                 </div>
             </div>
@@ -87,9 +90,9 @@
 
         <!-- Skills -->
         <section class="skills">
-            <h2>// skills</h2>
+            <h2 data-i18n="skillsTitle">// skills</h2>
             <div class="skills-category">
-                <span class="category-label">Systems</span>
+                <span class="category-label" data-i18n="skillsSystems">Systems</span>
                 <div class="skills-grid">
                     <div class="skill-item"><span class="skill-name">Linux</span></div>
                     <div class="skill-item"><span class="skill-name">Windows Server</span></div>
@@ -99,7 +102,7 @@
                 </div>
             </div>
             <div class="skills-category">
-                <span class="category-label">Networking</span>
+                <span class="category-label" data-i18n="skillsNetworking">Networking</span>
                 <div class="skills-grid">
                     <div class="skill-item"><span class="skill-name">TCP/IP</span></div>
                     <div class="skill-item"><span class="skill-name">DNS</span></div>
@@ -109,7 +112,7 @@
                 </div>
             </div>
             <div class="skills-category">
-                <span class="category-label">Development</span>
+                <span class="category-label" data-i18n="skillsDev">Development</span>
                 <div class="skills-grid">
                     <div class="skill-item"><span class="skill-name">Python</span></div>
                     <div class="skill-item"><span class="skill-name">Bash</span></div>
@@ -122,22 +125,22 @@
 
         <!-- Education -->
         <section class="education">
-            <h2>// education</h2>
+            <h2 data-i18n="eduTitle">// education</h2>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-date">2018 - 2021</div>
                     <div class="timeline-content">
-                        <h3>IT Systems & Network Administration</h3>
+                        <h3 data-i18n="eduDegree1">IT Systems & Network Administration</h3>
                         <span class="company">IES Carles Vallbona</span>
-                        <p>Higher Technician Degree — Cybersecurity Profile</p>
+                        <p data-i18n="eduDesc1">Higher Technician Degree — Cybersecurity Profile</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-date">2016 - 2018</div>
                     <div class="timeline-content">
-                        <h3>Microcomputer Systems & Networks</h3>
+                        <h3 data-i18n="eduDegree2">Microcomputer Systems & Networks</h3>
                         <span class="company">INS Les Salines</span>
-                        <p>Middle Grade Degree</p>
+                        <p data-i18n="eduDesc2">Middle Grade Degree</p>
                     </div>
                 </div>
             </div>
@@ -145,7 +148,7 @@
 
         <!-- Certifications -->
         <section class="certifications">
-            <h2>// certifications</h2>
+            <h2 data-i18n="certTitle">// certifications</h2>
             <div class="cert-grid">
                 <div class="cert-item">
                     <span class="cert-icon">🏅</span>
@@ -166,27 +169,27 @@
 
         <!-- Pi Stats -->
         <section class="pi-stats">
-            <h2>// homelab</h2>
-            <p class="section-desc">Personal Raspberry Pi server running 24/7</p>
+            <h2 data-i18n="homelabTitle">// homelab</h2>
+            <p class="section-desc" data-i18n="homelabDesc">Personal Raspberry Pi server running 24/7</p>
             <div class="stats-grid">
                 <div class="stat-card">
                     <span class="stat-icon">⚡</span>
-                    <span class="stat-label">Status</span>
+                    <span class="stat-label" data-i18n="statStatus">Status</span>
                     <span class="stat-value online" id="pi-status">ONLINE</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">⏱</span>
-                    <span class="stat-label">Uptime</span>
+                    <span class="stat-label" data-i18n="statUptime">Uptime</span>
                     <span class="stat-value" id="pi-uptime">--d --h</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">🌡</span>
-                    <span class="stat-label">Temp</span>
+                    <span class="stat-label" data-i18n="statTemp">Temp</span>
                     <span class="stat-value" id="pi-temp">--°C</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">💾</span>
-                    <span class="stat-label">Memory</span>
+                    <span class="stat-label" data-i18n="statMemory">Memory</span>
                     <span class="stat-value" id="pi-memory">--%</span>
                 </div>
                 <div class="stat-card">
@@ -196,12 +199,12 @@
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">🚫</span>
-                    <span class="stat-label">Blocked</span>
+                    <span class="stat-label" data-i18n="statBlocked">Blocked</span>
                     <span class="stat-value" id="pi-pihole-percent">--%</span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-icon">📋</span>
-                    <span class="stat-label">Blocklist</span>
+                    <span class="stat-label" data-i18n="statBlocklist">Blocklist</span>
                     <span class="stat-value" id="pi-pihole-domains">--</span>
                 </div>
             </div>
@@ -209,7 +212,7 @@
 
         <!-- Projects -->
         <section class="projects">
-            <h2>// projects</h2>
+            <h2 data-i18n="projTitle">// projects</h2>
 
             <div class="project-grid">
                 <article class="project-card">
@@ -224,7 +227,7 @@
                         </svg>
                     </div>
                     <h3>PiBot</h3>
-                    <p>Telegram bot for remote Raspberry Pi management. Controls WireGuard VPN, Pi-hole v6, monitors public IP, and auto-updates dynamic DNS.</p>
+                    <p data-i18n="projPibotDesc">Telegram bot for remote Raspberry Pi management. Controls WireGuard VPN, Pi-hole v6, monitors public IP, and auto-updates dynamic DNS.</p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">Telegram API</span>
@@ -246,7 +249,7 @@
                         </svg>
                     </div>
                     <h3>WireGuard VPN</h3>
-                    <p>Personal VPN server for secure remote access. Client management via Telegram with QR code generation.</p>
+                    <p data-i18n="projWgDesc">Personal VPN server for secure remote access. Client management via Telegram with QR code generation.</p>
                     <div class="project-tags">
                         <span class="tag">WireGuard</span>
                         <span class="tag">Networking</span>
@@ -266,7 +269,7 @@
                         </svg>
                     </div>
                     <h3>Cloudflare Tunnel</h3>
-                    <p>Secure tunnel exposing local services to the internet without opening ports. Powers this site's live stats API.</p>
+                    <p data-i18n="projCfDesc">Secure tunnel exposing local services to the internet without opening ports. Powers this site's live stats API.</p>
                     <div class="project-tags">
                         <span class="tag">Cloudflare</span>
                         <span class="tag">API</span>
@@ -286,7 +289,7 @@
                         </svg>
                     </div>
                     <h3>Pi-hole</h3>
-                    <p>Network-wide ad blocker running Pi-hole v6. Blocks 770K+ domains across ads, trackers, malware, and crypto-mining for all devices on the network.</p>
+                    <p data-i18n="projPiholeDesc">Network-wide ad blocker running Pi-hole v6. Blocks 770K+ domains across ads, trackers, malware, and crypto-mining for all devices on the network.</p>
                     <div class="project-tags">
                         <span class="tag">DNS</span>
                         <span class="tag">Privacy</span>
@@ -301,7 +304,7 @@
 
         <!-- Contact -->
         <section class="contact">
-            <h2>// contact</h2>
+            <h2 data-i18n="contactTitle">// contact</h2>
             <div class="contact-links">
                 <a href="https://www.linkedin.com/in/oliver-corral/" target="_blank" rel="noopener" class="contact-link">
                     <svg viewBox="0 0 16 16" class="pixel-icon">
@@ -333,11 +336,11 @@
 
         <!-- Footer -->
         <footer>
-            <p class="footer-quote">"I don't need a map — I'll build the route"</p>
+            <p class="footer-quote" data-i18n="footerQuote">"I don't need a map — I'll build the route"</p>
             <p class="footer-year">2026</p>
         </footer>
     </main>
 
-    <script src="script.js?v=1769500000"></script>
+    <script src="script.js?v=1769500001"></script>
 </body>
 </html>
