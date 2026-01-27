@@ -194,13 +194,10 @@ function setupThemeToggle() {
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
 
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.body.setAttribute('data-theme', savedTheme);
-
     btn.addEventListener('click', () => {
-        const current = document.body.getAttribute('data-theme');
+        const current = document.documentElement.getAttribute('data-theme');
         const next = current === 'dark' ? 'light' : 'dark';
-        document.body.setAttribute('data-theme', next);
+        document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
     });
 }
