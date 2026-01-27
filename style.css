@@ -62,6 +62,15 @@ html {
     scroll-behavior: smooth;
 }
 
+html.loading body {
+    opacity: 0;
+}
+
+html.ready body {
+    opacity: 1;
+    transition: opacity 0.15s ease;
+}
+
 body {
     font-family: var(--body-font);
     background: var(--bg-primary);

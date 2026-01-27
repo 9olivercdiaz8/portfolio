@@ -313,8 +313,12 @@ window.addEventListener('load', () => {
 
     setupThemeToggle();
     setupLangToggle();
+
+    // Reveal page after theme + language are applied
+    document.documentElement.classList.remove('loading');
+    document.documentElement.classList.add('ready');
+
     updatePiStats();
-    // typeWriter needs the translated tagline text, so it runs after setupLangToggle
     typeWriter();
 });
 

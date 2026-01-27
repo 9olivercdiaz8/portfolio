@@ -21,6 +21,7 @@
         (function() {
             var t = localStorage.getItem('theme') || 'dark';
             document.documentElement.setAttribute('data-theme', t);
+            document.documentElement.classList.add('loading');
         })();
     </script>
 </head>
@@ -347,6 +348,6 @@
         </footer>
     </main>
 
-    <script src="script.js?v=1769500002"></script>
+    <script src="script.js?v=1769500003"></script>
 </body>
 </html>
