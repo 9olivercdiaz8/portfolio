@@ -243,25 +243,6 @@ async function updatePiStats() {
 
 setInterval(updatePiStats, 30000);
 
-// Typing effect
-function typeWriter() {
-    const el = document.querySelector('.tagline');
-    if (!el) return;
-
-    const text = el.textContent;
-    el.textContent = '';
-    el.style.borderRight = '2px solid var(--accent-primary)';
-
-    let i = 0;
-    (function type() {
-        if (i < text.length) {
-            el.textContent += text.charAt(i++);
-            setTimeout(type, 50);
-        } else {
-            setTimeout(() => { el.style.borderRight = 'none'; }, 2000);
-        }
-    })();
-}
 
 // Konami
 let konamiBuffer = [];
@@ -297,7 +278,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.classList.add('ready');
 
     updatePiStats();
-    typeWriter();
 });
 
 window.addEventListener('load', () => {
