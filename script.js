@@ -43,6 +43,10 @@ function drawPixel(x, y, size, color, opacity) {
 }
 
 function animateParticles() {
+    if (document.hidden) {
+        requestAnimationFrame(animateParticles);
+        return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     particles.forEach((p, i) => {
@@ -175,10 +179,10 @@ function typeWriter() {
 
 // ========== KONAMI CODE ==========
 let konamiCode = [];
-const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
 
 document.addEventListener('keydown', (e) => {
-    konamiCode.push(e.keyCode);
+    konamiCode.push(e.key);
     konamiCode = konamiCode.slice(-10);
 
     if (konamiCode.join(',') === konami.join(',')) {
