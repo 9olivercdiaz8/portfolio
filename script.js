@@ -108,12 +108,21 @@ async function updatePiStats() {
         document.getElementById('pi-memory').textContent = `${data.memory}%`;
         document.getElementById('wg-peers').textContent = data.peers || 0;
 
+        // Pi-hole stats
+        document.getElementById('pi-pihole-blocked').textContent = (data.pihole_blocked || 0).toLocaleString();
+        document.getElementById('pi-pihole-percent').textContent = `${data.pihole_percent || 0}%`;
+        const domains = data.pihole_domains || 0;
+        document.getElementById('pi-pihole-domains').textContent = domains >= 1000 ? `${Math.round(domains / 1000)}K` : domains;
+
         // Guardar último estado conocido
         localStorage.setItem('piStats', JSON.stringify({
             uptime: data.uptime,
             temp: data.temp,
             memory: data.memory,
             peers: data.peers || 0,
+            pihole_blocked: data.pihole_blocked || 0,
+            pihole_percent: data.pihole_percent || 0,
+            pihole_domains: data.pihole_domains || 0,
             timestamp: Date.now()
         }));
     } catch (error) {
@@ -128,6 +137,10 @@ async function updatePiStats() {
             document.getElementById('pi-temp').textContent = `${data.temp}°C*`;
             document.getElementById('pi-memory').textContent = `${data.memory}%*`;
             document.getElementById('wg-peers').textContent = `${data.peers}*`;
+            document.getElementById('pi-pihole-blocked').textContent = `${(data.pihole_blocked || 0).toLocaleString()}*`;
+            document.getElementById('pi-pihole-percent').textContent = `${data.pihole_percent || 0}%*`;
+            const domains = data.pihole_domains || 0;
+            document.getElementById('pi-pihole-domains').textContent = domains >= 1000 ? `${Math.round(domains / 1000)}K*` : `${domains}*`;
         }
     }
 }
