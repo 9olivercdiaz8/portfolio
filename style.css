@@ -253,6 +253,35 @@ section {
     50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
 }
 
+/* ========== CV BUTTON ========== */
+.cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--accent-primary);
+    border-radius: 6px;
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-family: var(--pixel-font);
+    font-size: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.cv-btn:hover {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
+}
+
+.cv-btn .pixel-icon {
+    width: 16px;
+    height: 16px;
+}
+
 /* ========== ABOUT ========== */
 .about p {
     color: var(--text-secondary);
@@ -282,12 +311,6 @@ section {
 .skill-item:hover {
     border-color: var(--accent-primary);
     transform: translateY(-2px);
-}
-
-.skill-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }
 
 .skill-name {
@@ -510,6 +533,38 @@ footer p {
     opacity: 0.5;
 }
 
+/* ========== BACK TO TOP ========== */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 40px;
+    height: 40px;
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.back-to-top:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
     main {
@@ -544,7 +599,7 @@ footer p {
     }
 
     .skills-grid {
-        grid-template-columns: 1fr;
+        justify-content: flex-start;
     }
 
     .stats-grid {
@@ -666,6 +721,9 @@ footer p {
 .stat-card:nth-child(2) { animation-delay: 0.15s; }
 .stat-card:nth-child(3) { animation-delay: 0.2s; }
 .stat-card:nth-child(4) { animation-delay: 0.25s; }
+.stat-card:nth-child(5) { animation-delay: 0.3s; }
+.stat-card:nth-child(6) { animation-delay: 0.35s; }
+.stat-card:nth-child(7) { animation-delay: 0.4s; }
 
 .project-card:nth-child(1) { animation-delay: 0.1s; }
 .project-card:nth-child(2) { animation-delay: 0.15s; }

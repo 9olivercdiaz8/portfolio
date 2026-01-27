@@ -111,7 +111,8 @@ const translations = {
         projCfDesc: "Secure tunnel exposing local services to the internet without opening ports. Powers this site's live stats API.",
         projPiholeDesc: "Network-wide ad blocker running Pi-hole v6. Blocks 770K+ domains across ads, trackers, malware, and crypto-mining for all devices on the network.",
         contactTitle: "// contact",
-        footerQuote: "\"I don't need a map — I'll build the route\""
+        footerQuote: "\"I don't need a map — I'll build the route\"",
+        cvBtn: "Download CV"
     },
     es: {
         pageTitle: "Oliver C. Díaz | Especialista IT & Redes",
@@ -152,7 +153,8 @@ const translations = {
         projCfDesc: "Túnel seguro que expone servicios locales a internet sin abrir puertos. Alimenta la API de estadísticas en vivo de esta web.",
         projPiholeDesc: "Bloqueador de anuncios a nivel de red con Pi-hole v6. Bloquea más de 770K dominios entre anuncios, rastreadores, malware y criptominería para todos los dispositivos de la red.",
         contactTitle: "// contacto",
-        footerQuote: "\"No necesito un mapa — construiré la ruta\""
+        footerQuote: "\"No necesito un mapa — construiré la ruta\"",
+        cvBtn: "Descargar CV"
     }
 };
 
@@ -305,11 +307,26 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// ========== BACK TO TOP ==========
+function setupBackToTop() {
+    const btn = document.getElementById('back-to-top');
+    if (!btn) return;
+
+    window.addEventListener('scroll', () => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
 // ========== INIT ==========
 // Apply theme + language ASAP (before fonts/images load)
 document.addEventListener('DOMContentLoaded', () => {
     setupThemeToggle();
     setupLangToggle();
+    setupBackToTop();
 
     // Reveal page after theme + language are applied
     document.documentElement.classList.remove('loading');
