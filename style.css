@@ -268,7 +268,6 @@ h3 {
 .about p {
     color: var(--text-secondary);
     font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-    max-width: 600px;
 }
 
 /* Timeline (experience & education) */
@@ -701,7 +700,7 @@ footer p {
     }
 
     .stat-card:last-child { border-bottom: none; padding-bottom: 0; }
-    .project-grid { grid-template-columns: 1fr; }
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
     .contact-links { flex-direction: column; }
     .contact-link { justify-content: center; }
 
@@ -714,4 +713,5 @@ footer p {
 @media (max-width: 400px) {
     .pixel-avatar { width: 70px; height: 70px; }
     h1 { font-size: 0.9rem; }
+    .project-grid { grid-template-columns: 1fr; }
 }
