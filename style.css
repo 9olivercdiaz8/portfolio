@@ -242,28 +242,26 @@ h3 {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1.25rem;
-    padding: 0.6rem 1.2rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
     background: var(--bg-card);
-    border: 1px solid var(--accent-primary);
-    border-radius: 6px;
-    color: var(--accent-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 2rem;
+    color: var(--text-secondary);
     text-decoration: none;
-    font-family: var(--pixel-font);
-    font-size: 0.5rem;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
+    font-size: 0.8rem;
+    transition: border-color 0.3s, color 0.3s, transform 0.2s;
 }
 
 .cv-btn:hover {
-    background: var(--accent-primary);
-    color: var(--bg-primary);
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(34, 211, 238, 0.2);
 }
 
 .cv-btn .pixel-icon {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
 }
 
 /* About */
