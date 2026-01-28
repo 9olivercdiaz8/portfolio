@@ -262,7 +262,7 @@ h3 {
 .cv-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.6rem;
     margin-top: 0.75rem;
     padding: 0.6rem 1.2rem;
     background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(34, 211, 238, 0.05));
@@ -271,7 +271,7 @@ h3 {
     color: var(--accent-secondary);
     text-decoration: none;
     font-family: var(--pixel-font);
-    font-size: 0.5rem;
+    font-size: 0.6rem;
     letter-spacing: 0.5px;
     text-transform: uppercase;
     transition: box-shadow 0.3s, transform 0.2s, border-color 0.3s;
