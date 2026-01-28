@@ -451,6 +451,7 @@ h3 {
 }
 
 .stat-value.online { color: var(--status-online); }
+.stat-value.offline { color: #ef4444; }
 
 /* Projects */
 .project-grid {

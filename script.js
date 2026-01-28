@@ -224,9 +224,14 @@ async function updatePiStats() {
     } catch {
         $('pi-status').textContent = 'OFFLINE';
         $('pi-status').classList.remove('online');
+        $('pi-status').classList.add('offline');
 
         const cached = localStorage.getItem('piStats');
-        if (!cached) return;
+        if (!cached) {
+            ['pi-uptime','pi-temp','pi-memory','pi-pihole-blocked','pi-pihole-percent','pi-pihole-domains'].forEach(id => $(id).textContent = 'N/A');
+            $('wg-peers').textContent = '0';
+            return;
+        }
         const d = JSON.parse(cached);
 
         $('pi-uptime').textContent = d.uptime + '*';
@@ -295,6 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updatePiStats();
     typeWriter();
+
+    const yearEl = document.getElementById('footer-year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 
 window.addEventListener('load', () => {
