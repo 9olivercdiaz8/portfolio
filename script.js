@@ -111,6 +111,8 @@ const translations = {
         projPiholeDesc: "Network-wide ad blocker running Pi-hole v6. Blocks 770K+ domains across ads, trackers, malware, and crypto-mining for all devices on the network.",
         contactTitle: "// contact",
         footerQuote: "\"I don't need a map - I'll build the route\"",
+        comingSoon: "Coming Soon",
+        comingSoonText: "CV under construction",
         cvBtn: "Download CV"
     },
     es: {
@@ -153,6 +155,8 @@ const translations = {
         projPiholeDesc: "Bloqueador de anuncios a nivel de red con Pi-hole v6. Bloquea más de 770K dominios entre anuncios, rastreadores, malware y criptominería para todos los dispositivos de la red.",
         contactTitle: "// contacto",
         footerQuote: "\"No necesito un mapa - construiré la ruta\"",
+        comingSoon: "Próximamente",
+        comingSoonText: "CV en construcción",
         cvBtn: "Descargar CV"
     }
 };
@@ -288,6 +292,34 @@ function setupBackToTop() {
     window.addEventListener('scroll', () => btn.classList.toggle('visible', window.scrollY > 400));
     btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
+
+// Coming Soon Modal
+function showComingSoon() {
+    const modal = document.getElementById('coming-soon-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function hideComingSoon(event) {
+    const modal = document.getElementById('coming-soon-modal');
+    if (event.target === modal || event.target.classList.contains('modal-close')) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('coming-soon-modal');
+        if (modal && modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
 
 // Init
 document.addEventListener('DOMContentLoaded', () => {

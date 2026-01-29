@@ -823,3 +823,105 @@ footer p {
     h1 { font-size: 0.9rem; }
     .project-grid { grid-template-columns: 1fr; }
 }
+
+/* Coming Soon Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    max-width: 320px;
+    transform: scale(0.8);
+    transition: transform 0.3s;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.cloud-container {
+    width: 120px;
+    height: 80px;
+    margin: 0 auto 1rem;
+}
+
+.cloud-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.cloud-path {
+    animation: cloudFloat 3s ease-in-out infinite;
+}
+
+@keyframes cloudFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.particle {
+    animation: particleFloat 2s ease-in-out infinite;
+}
+
+.particle.p1 { animation-delay: 0s; }
+.particle.p2 { animation-delay: 0.5s; }
+.particle.p3 { animation-delay: 1s; }
+
+@keyframes particleFloat {
+    0%, 100% { opacity: 0.6; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(-8px); }
+}
+
+.coming-soon-title {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.coming-soon-text {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.modal-close:hover {
+    color: var(--accent-color);
+}
