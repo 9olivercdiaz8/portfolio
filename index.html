@@ -376,30 +376,21 @@
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">&#9650;</button>
 
-    <!-- Coming Soon Modal -->
+    <!-- Coming Soon Modal - Pixel Art -->
     <div id="coming-soon-modal" class="modal-overlay" onclick="hideComingSoon(event)">
-        <div class="modal-content">
+        <div class="modal-content" onclick="event.stopPropagation()">
             <div class="cloud-container">
-                <svg class="cloud-svg" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="cloudGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:var(--accent-color);stop-opacity:0.3" />
-                            <stop offset="100%" style="stop-color:var(--accent-color);stop-opacity:0.1" />
-                        </linearGradient>
-                    </defs>
-                    <path class="cloud-path" d="M20,45 Q10,45 10,35 Q10,25 20,25 Q20,15 35,15 Q45,10 55,15 Q65,10 75,15 Q85,15 85,25 Q95,25 95,35 Q95,45 85,45 Z"
-                          fill="url(#cloudGradient)" stroke="var(--accent-color)" stroke-width="2"/>
-                    <circle class="particle p1" cx="30" cy="30" r="2" fill="var(--accent-color)" opacity="0.6"/>
-                    <circle class="particle p2" cx="50" cy="25" r="1.5" fill="var(--accent-color)" opacity="0.4"/>
-                    <circle class="particle p3" cx="70" cy="32" r="2" fill="var(--accent-color)" opacity="0.5"/>
-                </svg>
+                <div class="pixel-cloud"></div>
+                <div class="pixel-sparkle"></div>
+                <div class="pixel-sparkle"></div>
+                <div class="pixel-sparkle"></div>
             </div>
             <h3 class="coming-soon-title" data-i18n="comingSoon">Coming Soon</h3>
             <p class="coming-soon-text" data-i18n="comingSoonText">CV under construction</p>
-            <button class="modal-close" onclick="hideComingSoon(event)">&times;</button>
+            <button class="modal-close" onclick="hideComingSoon(event)">X</button>
         </div>
     </div>
 
-    <script src="script.js?v=1769704841"></script>
+    <script src="script.js?v=1769705000"></script>
 </body>
 </html>
