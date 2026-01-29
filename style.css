@@ -213,6 +213,13 @@ h3 {
     margin-bottom: 1rem;
 }
 
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
 .status {
     font-family: var(--pixel-font);
     font-size: 0.6rem;
@@ -263,7 +270,7 @@ h3 {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    margin-top: 1.25rem;
+    margin-top: 0;
     padding: 0.6rem 1.2rem;
     background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(34, 211, 238, 0.05));
     border: 1px solid var(--accent-secondary);
