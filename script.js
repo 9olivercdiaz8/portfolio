@@ -77,7 +77,7 @@ const translations = {
         location: "Barcelona, Spain",
         status: "Available for opportunities",
         aboutTitle: "// about",
-        aboutText: "I fix networks, automate what I can, and build the rest from scratch. From managing hotel infrastructure to running my own homelab with VPNs, bots, and self-hosted services — I like systems that work and stay working.",
+        aboutText: "I fix networks, automate what I can, and build the rest from scratch. From managing hotel infrastructure to running my own homelab with VPNs, bots, and self-hosted services. I like systems that work and stay working.",
         expTitle: "// experience",
         expDate1: "2024 - Present",
         expRole1: "Helpdesk Agent",
@@ -92,7 +92,7 @@ const translations = {
         skillsDev: "Development",
         eduTitle: "// education",
         eduDegree1: "IT Systems & Network Administration",
-        eduDesc1: "Higher Technician Degree — Cybersecurity Profile",
+        eduDesc1: "Higher Technician Degree - Cybersecurity Profile",
         eduDegree2: "Microcomputer Systems & Networks",
         eduDesc2: "Middle Grade Degree",
         certTitle: "// certifications",
@@ -110,7 +110,7 @@ const translations = {
         projCfDesc: "Secure tunnel exposing local services to the internet without opening ports. Powers this site's live stats API.",
         projPiholeDesc: "Network-wide ad blocker running Pi-hole v6. Blocks 770K+ domains across ads, trackers, malware, and crypto-mining for all devices on the network.",
         contactTitle: "// contact",
-        footerQuote: "\"I don't need a map — I'll build the route\"",
+        footerQuote: "\"I don't need a map - I'll build the route\"",
         cvBtn: "Download CV"
     },
     es: {
@@ -119,7 +119,7 @@ const translations = {
         location: "Barcelona, España",
         status: "Disponible para oportunidades",
         aboutTitle: "// sobre mí",
-        aboutText: "Arreglo redes, automatizo lo que puedo y construyo el resto desde cero. De gestionar infraestructura en hoteles a montar mi propio homelab con VPNs, bots y servicios autoalojados — me gustan los sistemas que funcionan y siguen funcionando.",
+        aboutText: "Arreglo redes, automatizo lo que puedo y construyo el resto desde cero. De gestionar infraestructura en hoteles a montar mi propio homelab con VPNs, bots y servicios autoalojados. Me gustan los sistemas que funcionan y siguen funcionando.",
         expTitle: "// experiencia",
         expDate1: "2024 - Actualidad",
         expRole1: "Agente Helpdesk",
@@ -134,7 +134,7 @@ const translations = {
         skillsDev: "Desarrollo",
         eduTitle: "// formación",
         eduDegree1: "Administración de Sistemas Informáticos en Red",
-        eduDesc1: "Grado Superior — Perfil Ciberseguridad",
+        eduDesc1: "Grado Superior - Perfil Ciberseguridad",
         eduDegree2: "Sistemas Microinformáticos y Redes",
         eduDesc2: "Grado Medio",
         certTitle: "// certificaciones",
@@ -152,7 +152,7 @@ const translations = {
         projCfDesc: "Túnel seguro que expone servicios locales a internet sin abrir puertos. Alimenta la API de estadísticas en vivo de esta web.",
         projPiholeDesc: "Bloqueador de anuncios a nivel de red con Pi-hole v6. Bloquea más de 770K dominios entre anuncios, rastreadores, malware y criptominería para todos los dispositivos de la red.",
         contactTitle: "// contacto",
-        footerQuote: "\"No necesito un mapa — construiré la ruta\"",
+        footerQuote: "\"No necesito un mapa - construiré la ruta\"",
         cvBtn: "Descargar CV"
     }
 };
