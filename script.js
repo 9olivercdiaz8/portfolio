@@ -90,6 +90,8 @@ const translations = {
         skillsSystems: "Systems",
         skillsNetworking: "Networking",
         skillsDev: "Development",
+        learningTitle: "// currently learning",
+        learningDesc: "Expanding my skills in cloud and orchestration",
         eduTitle: "// education",
         eduDegree1: "IT Systems & Network Administration",
         eduDesc1: "Higher Technician Degree - Cybersecurity Profile",
@@ -134,6 +136,8 @@ const translations = {
         skillsSystems: "Sistemas",
         skillsNetworking: "Redes",
         skillsDev: "Desarrollo",
+        learningTitle: "// aprendiendo",
+        learningDesc: "Ampliando conocimientos en cloud y orquestación",
         eduTitle: "// formación",
         eduDegree1: "Administración de Sistemas Informáticos en Red",
         eduDesc1: "Grado Superior - Perfil Ciberseguridad",
@@ -158,10 +162,73 @@ const translations = {
         comingSoon: "Próximamente",
         comingSoonText: "CV en construcción",
         cvBtn: "Descargar CV"
+    },
+    ca: {
+        pageTitle: "Oliver C. Díaz | Especialista IT & Xarxes",
+        tagline: "Especialista IT & Xarxes",
+        location: "Barcelona, Catalunya",
+        status: "Disponible per a oportunitats",
+        aboutTitle: "// sobre mi",
+        aboutText: "Arreglo xarxes, automatitzo el que puc i construeixo la resta des de zero. De gestionar infraestructura en hotels a muntar el meu propi homelab amb VPNs, bots i serveis autoallotjats que simplement funcionen.",
+        expTitle: "// experiència",
+        expDate1: "2024 - Actualitat",
+        expRole1: "Agent Helpdesk",
+        expDesc1: "Suport presencial i remot per al Departament d'Educació de Catalunya. Resolució i escalat d'incidències L1.",
+        expRole2: "Tècnic IT",
+        expDesc2: "Gestió de xarxes en 8+ hotels. Reducció del cost d'internet un 20% mitjançant optimització d'ample de banda. Reducció del temps de resolució d'incidències un 25%.",
+        expRole3: "Tècnic IT",
+        expDesc3: "Optimització d'entorns Active Directory i VMware. Reducció del temps d'inactivitat un 10% mitjançant manteniment preventiu.",
+        skillsTitle: "// habilitats",
+        skillsSystems: "Sistemes",
+        skillsNetworking: "Xarxes",
+        skillsDev: "Desenvolupament",
+        learningTitle: "// aprenent",
+        learningDesc: "Ampliant coneixements en cloud i orquestració",
+        eduTitle: "// formació",
+        eduDegree1: "Administració de Sistemes Informàtics en Xarxa",
+        eduDesc1: "Grau Superior - Perfil Ciberseguretat",
+        eduDegree2: "Sistemes Microinformàtics i Xarxes",
+        eduDesc2: "Grau Mitjà",
+        certTitle: "// certificacions",
+        homelabTitle: "// homelab",
+        homelabDesc: "Servidor personal Raspberry Pi funcionant 24/7",
+        statStatus: "Estat",
+        statUptime: "Uptime",
+        statTemp: "Temp",
+        statMemory: "Memòria",
+        statBlocked: "Bloquejat",
+        statBlocklist: "Blocklist",
+        projTitle: "// projectes",
+        projPibotDesc: "Bot de Telegram per a gestió remota de Raspberry Pi. Controla WireGuard VPN, Pi-hole v6, monitoritza IP pública i actualitza DNS dinàmic automàticament.",
+        projWgDesc: "Servidor VPN personal per a accés remot segur. Gestió de clients via Telegram amb generació de codis QR.",
+        projCfDesc: "Túnel segur que exposa serveis locals a internet sense obrir ports. Alimenta l'API d'estadístiques en viu d'aquesta web.",
+        projPiholeDesc: "Bloquejador d'anuncis a nivell de xarxa amb Pi-hole v6. Bloqueja més de 770K dominis entre anuncis, rastrejadors, malware i criptomineria per a tots els dispositius de la xarxa.",
+        contactTitle: "// contacte",
+        footerQuote: "\"No necessito un mapa - construiré la ruta\"",
+        comingSoon: "Properament",
+        comingSoonText: "CV en construcció",
+        cvBtn: "Descarregar CV"
     }
 };
 
-let currentLang = localStorage.getItem('lang') || (navigator.language.startsWith('es') ? 'es' : 'en');
+const langOrder = ['en', 'es', 'ca'];
+
+function detectLanguage() {
+    const stored = localStorage.getItem('lang');
+    if (stored && translations[stored]) return stored;
+
+    const browserLang = navigator.language.toLowerCase();
+    if (browserLang.startsWith('ca')) return 'ca';
+    if (browserLang.startsWith('es')) return 'es';
+    return 'en';
+}
+
+let currentLang = detectLanguage();
+
+function getNextLang(current) {
+    const idx = langOrder.indexOf(current);
+    return langOrder[(idx + 1) % langOrder.length];
+}
 
 function setLanguage(lang) {
     currentLang = lang;
@@ -180,14 +247,17 @@ function setLanguage(lang) {
     }
 
     const langBtn = document.querySelector('.lang-text');
-    if (langBtn) langBtn.textContent = lang === 'en' ? 'ES' : 'EN';
+    if (langBtn) {
+        const next = getNextLang(lang);
+        langBtn.textContent = next.toUpperCase();
+    }
 }
 
 function setupLangToggle() {
     const btn = document.getElementById('lang-toggle');
     if (!btn) return;
     setLanguage(currentLang);
-    btn.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'es' : 'en'));
+    btn.addEventListener('click', () => setLanguage(getNextLang(currentLang)));
 }
 
 function setupThemeToggle() {

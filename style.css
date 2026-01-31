@@ -968,3 +968,75 @@ footer p {
 .modal-close:hover {
     color: var(--accent-color);
 }
+
+/* Learning Section */
+.learning {
+    margin-bottom: 4rem;
+}
+
+.learning-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.learning-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--card-bg, rgba(255,255,255,0.03));
+    border: 1px solid var(--border, rgba(255,255,255,0.08));
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.learning-item:hover {
+    border-color: var(--accent, #22d3ee);
+    transform: translateX(4px);
+}
+
+.learning-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    text-align: center;
+}
+
+.learning-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.learning-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text, #fff);
+}
+
+.learning-detail {
+    font-size: 0.8rem;
+    color: var(--text-muted, #888);
+}
+
+.learning-progress {
+    width: 80px;
+    height: 6px;
+    background: var(--border, rgba(255,255,255,0.1));
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent, #22d3ee), #a855f7);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+@media (max-width: 480px) {
+    .learning-progress {
+        display: none;
+    }
+}
