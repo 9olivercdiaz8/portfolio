@@ -1,442 +1,536 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n-title="pageTitle">Oliver C. Díaz | IT & Network Specialist</title>
+    <title>Oliver C. Diaz | IT & Network Specialist</title>
     <meta name="description" content="IT professional specializing in networks, systems administration, and infrastructure. Based in Barcelona.">
-    <meta property="og:title" content="Oliver C. Díaz | IT & Network Specialist">
-    <meta property="og:description" content="IT professional specializing in networks, systems administration, and infrastructure. Based in Barcelona.">
+    <meta property="og:title" content="Oliver C. Diaz | IT & Network Specialist">
+    <meta property="og:description" content="IT professional specializing in networks, systems, and infrastructure automation.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://olivercdiaz.com">
     <meta property="og:image" content="https://olivercdiaz.com/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://olivercdiaz.com/og-image.png">
-    <meta name="twitter:title" content="Oliver C. Díaz | IT & Network Specialist">
-    <meta name="twitter:description" content="IT professional specializing in networks, systems administration, and infrastructure.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1769705284">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script>
-        (function() {
-            var t = localStorage.getItem('theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', t);
-            document.documentElement.classList.add('loading');
+        (function(){
+            var t=localStorage.getItem('theme')||'dark';
+            document.documentElement.setAttribute('data-theme',t);
         })();
     </script>
 </head>
 <body>
-    <canvas id="pixels"></canvas>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <span class="loader-bracket">{</span>
+                <span class="loader-name">OCD</span>
+                <span class="loader-bracket">}</span>
+            </div>
+            <div class="loader-bar"><div class="loader-progress"></div></div>
+            <div class="loader-text">Initializing<span class="loader-dots"></span></div>
+        </div>
+    </div>
 
-    <div class="controls">
-            <span class="lang-text">EN</span>
+    <!-- Custom cursor -->
+    <div id="cursor" class="custom-cursor"></div>
+    <div id="cursor-trail" class="cursor-trail"></div>
+
+    <!-- Noise overlay -->
+    <div class="noise"></div>
+
+    <!-- Canvas bg -->
+    <canvas id="constellation"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-logo">{OCD}</div>
+        <div class="nav-links">
+            <a href="#about" class="nav-link" data-i18n="navAbout">About</a>
+            <a href="#experience" class="nav-link" data-i18n="navExp">Experience</a>
+            <a href="#skills" class="nav-link" data-i18n="navSkills">Skills</a>
+            <a href="#projects" class="nav-link" data-i18n="navProjects">Projects</a>
+            <a href="#homelab" class="nav-link" data-i18n="navHomelab">Homelab</a>
+            <a href="#contact" class="nav-link" data-i18n="navContact">Contact</a>
+        </div>
+        <div class="nav-controls">
+            <button id="lang-toggle" class="nav-btn" aria-label="Toggle language">
+                <span class="lang-text">ES</span>
+            </button>
+            <button id="theme-toggle" class="nav-btn" aria-label="Toggle theme">
+                <span class="theme-icon"></span>
+            </button>
+        </div>
+        <button id="nav-hamburger" class="nav-hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
         </button>
-        <button id="theme-toggle" class="control-btn" aria-label="Toggle theme">
-            <span class="icon-sun">&#9728;</span>
-            <span class="icon-moon">&#9790;</span>
-        </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#about" class="mobile-link" data-i18n="navAbout">About</a>
+        <a href="#experience" class="mobile-link" data-i18n="navExp">Experience</a>
+        <a href="#skills" class="mobile-link" data-i18n="navSkills">Skills</a>
+        <a href="#projects" class="mobile-link" data-i18n="navProjects">Projects</a>
+        <a href="#homelab" class="mobile-link" data-i18n="navHomelab">Homelab</a>
+        <a href="#contact" class="mobile-link" data-i18n="navContact">Contact</a>
     </div>
 
     <main>
-        <section class="hero">
-            <div class="avatar">
-                <div class="pixel-avatar"></div>
+        <!-- Hero -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <div class="hero-greeting" data-i18n="heroGreeting">Hi, my name is</div>
+                <h1 class="hero-name glitch" data-text="Oliver C. Diaz">Oliver C. Diaz</h1>
+                <div class="hero-title-wrapper">
+                    <span class="hero-title-prefix">&gt; </span>
+                    <h2 class="hero-title typing" id="typing-target"></h2>
+                    <span class="typing-cursor">|</span>
+                </div>
+                <p class="hero-desc" data-i18n="heroDesc">I fix networks, automate what I can, and build the rest from scratch.</p>
+                <div class="hero-badges">
+                    <span class="badge"><span class="badge-dot online"></span> <span data-i18n="heroAvailable">Available</span></span>
+                    <span class="badge">Barcelona, Spain</span>
+                    <span class="badge" id="hero-uptime">Pi: --</span>
+                </div>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn btn-primary" data-i18n="heroViewWork">View my work</a>
+                    <a href="#contact" class="btn btn-ghost" data-i18n="heroContact">Get in touch</a>
+                </div>
             </div>
-            <h1>Oliver C. Díaz</h1>
-            <p class="tagline" data-i18n="tagline">IT & Network Specialist</p>
-            <p class="location" data-i18n="location">Barcelona, Spain</p>
-            <div class="hero-actions">
-                <div class="status">
-                    <span class="status-dot"></span>
-                    <span data-i18n="status">Available for opportunities</span>
-                </div>
-                <button class="cv-btn" onclick="showComingSoon()">
-                    <svg viewBox="0 0 16 16" class="pixel-icon"><rect x="4" y="1" width="8" height="10" fill="none" stroke="currentColor" stroke-width="1"/><polyline points="5,7 8,10 11,7" fill="none" stroke="currentColor" stroke-width="1"/><rect x="7" y="3" width="2" height="5" fill="currentColor"/><rect x="2" y="13" width="12" height="2" fill="none" stroke="currentColor" stroke-width="1"/></svg>
-                    <span data-i18n="cvBtn">Download CV</span>
-                </button>
-            </div>
-        </section>
-
-        <section class="about">
-            <h2 data-i18n="aboutTitle">// about</h2>
-            <p data-i18n="aboutText">
-                I fix networks, automate what I can, and build the rest from scratch.
-                From managing hotel infrastructure to running my own homelab with VPNs, bots, and self-hosted services that just work.
-            </p>
-        </section>
-
-        <section class="experience">
-            <h2 data-i18n="expTitle">// experience</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date" data-i18n="expDate1">2024 - Present</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="expRole1">Helpdesk Agent</h3>
-                        <span class="company">IRIUM</span>
-                        <p data-i18n="expDesc1">On-site and remote support for the Department of Education of Catalonia. L1 incident resolution and escalation.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2023 - 2024</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="expRole2">IT Technician</h3>
-                        <span class="company">Netland SL</span>
-                        <p data-i18n="expDesc2">Managed networks for 8+ hotels. Reduced internet costs by 20% through bandwidth optimization. Decreased incident resolution time by 25%.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2021 - 2022</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="expRole3">IT Technician</h3>
-                        <span class="company">Plasticband</span>
-                        <p data-i18n="expDesc3">Optimized Active Directory and VMware environments. Reduced service downtime by 10% through preventive maintenance.</p>
-                    </div>
-                </div>
+            <div class="scroll-indicator">
+                <div class="mouse"><div class="wheel"></div></div>
+                <span data-i18n="heroScroll">Scroll down</span>
             </div>
         </section>
 
-        <section class="skills">
-            <h2 data-i18n="skillsTitle">// skills</h2>
-            <div class="skills-category">
-                <span class="category-label" data-i18n="skillsSystems">Systems</span>
+        <!-- About -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title reveal" data-i18n="aboutTitle">// about</h2>
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <p data-i18n="aboutText1">I'm an IT & Network Specialist based in Barcelona. I manage infrastructure, automate processes, and build self-hosted services that run 24/7 without intervention.</p>
+                        <p data-i18n="aboutText2">From hotel network management to running a full homelab with VPNs, Telegram bots, media servers, and game automation — I enjoy turning complex problems into elegant, automated solutions.</p>
+                        <p data-i18n="aboutText3">When I'm not fixing networks, I'm probably writing Python bots or tinkering with my Raspberry Pi.</p>
+                    </div>
+                    <div class="about-terminal reveal">
+                        <div class="terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-dots">
+                                    <span class="dot red"></span>
+                                    <span class="dot yellow"></span>
+                                    <span class="dot green"></span>
+                                </div>
+                                <span class="terminal-title">oliver@pi ~ $</span>
+                            </div>
+                            <div class="terminal-body">
+                                <div class="term-line"><span class="term-prompt">$</span> <span class="term-cmd">neofetch --short</span></div>
+                                <div class="term-line"><span class="term-key">Name:</span> Oliver C. Diaz</div>
+                                <div class="term-line"><span class="term-key">Role:</span> <span data-i18n="termRole">IT & Network Specialist</span></div>
+                                <div class="term-line"><span class="term-key">Location:</span> Barcelona, Spain</div>
+                                <div class="term-line"><span class="term-key">Uptime:</span> <span data-i18n="termUptime">5+ years in IT</span></div>
+                                <div class="term-line"><span class="term-key">Shell:</span> Python / Bash / JS</div>
+                                <div class="term-line"><span class="term-key">Servers:</span> <span data-i18n="termServers">3 running (Pi + VPS + NAS)</span></div>
+                                <div class="term-line"><span class="term-key">Bots:</span> <span data-i18n="termBots">6 active Telegram bots</span></div>
+                                <div class="term-line"><span class="term-key">Lines:</span> <span data-i18n="termLines">20K+ Python written</span></div>
+                                <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">_</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience" class="section">
+            <div class="container">
+                <h2 class="section-title reveal" data-i18n="expTitle">// experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date" data-i18n="expDate1">2024 - Present</div>
+                            <h3 data-i18n="expRole1">Helpdesk Agent</h3>
+                            <span class="company">IRIUM</span>
+                            <p data-i18n="expDesc1">On-site and remote support for the Department of Education of Catalonia. L1 incident resolution and escalation.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2023 - 2024</div>
+                            <h3 data-i18n="expRole2">IT Technician</h3>
+                            <span class="company">Netland SL</span>
+                            <p data-i18n="expDesc2">Managed networks for 8+ hotels. Reduced internet costs by 20% through bandwidth optimization. Decreased incident resolution time by 25%.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item reveal">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-card">
+                            <div class="timeline-date">2021 - 2022</div>
+                            <h3 data-i18n="expRole3">IT Technician</h3>
+                            <span class="company">Plasticband</span>
+                            <p data-i18n="expDesc3">Optimized Active Directory and VMware environments. Reduced service downtime by 10% through preventive maintenance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title reveal" data-i18n="skillsTitle">// skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-item"><span class="skill-name">Linux</span></div>
-                    <div class="skill-item"><span class="skill-name">Windows Server</span></div>
-                    <div class="skill-item"><span class="skill-name">VMware</span></div>
-                    <div class="skill-item"><span class="skill-name">Active Directory</span></div>
-                    <div class="skill-item"><span class="skill-name">Docker</span></div>
-                </div>
-            </div>
-            <div class="skills-category">
-                <span class="category-label" data-i18n="skillsNetworking">Networking</span>
-                <div class="skills-grid">
-                    <div class="skill-item"><span class="skill-name">TCP/IP</span></div>
-                    <div class="skill-item"><span class="skill-name">DNS</span></div>
-                    <div class="skill-item"><span class="skill-name">VPN</span></div>
-                    <div class="skill-item"><span class="skill-name">Firewalls</span></div>
-                    <div class="skill-item"><span class="skill-name">Routing</span></div>
-                </div>
-            </div>
-            <div class="skills-category">
-                <span class="category-label" data-i18n="skillsDev">Development</span>
-                <div class="skills-grid">
-                    <div class="skill-item"><span class="skill-name">Python</span></div>
-                    <div class="skill-item"><span class="skill-name">Bash</span></div>
-                    <div class="skill-item"><span class="skill-name">JavaScript</span></div>
-                    <div class="skill-item"><span class="skill-name">MySQL</span></div>
-                    <div class="skill-item"><span class="skill-name">Git</span></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="learning">
-            <h2 data-i18n="learningTitle">// currently learning</h2>
-            <p class="section-desc" data-i18n="learningDesc">Expanding my skills in cloud and orchestration</p>
-            <div class="learning-grid">
-                <div class="learning-item">
-                    <span class="learning-icon">☁️</span>
-                    <div class="learning-info">
-                        <span class="learning-name">AWS</span>
-                        <span class="learning-detail">Cloud Infrastructure</span>
+                    <div class="skill-category reveal">
+                        <h3 class="skill-cat-title"><span class="skill-cat-icon">&#9881;</span> <span data-i18n="skillsSystems">Systems</span></h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag" data-level="90">Linux</span>
+                            <span class="skill-tag" data-level="80">Windows Server</span>
+                            <span class="skill-tag" data-level="75">VMware</span>
+                            <span class="skill-tag" data-level="85">Active Directory</span>
+                            <span class="skill-tag" data-level="85">Docker</span>
+                            <span class="skill-tag" data-level="70">MongoDB</span>
+                        </div>
                     </div>
-                    <div class="learning-progress"><div class="progress-bar" style="width: 40%"></div></div>
-                </div>
-                <div class="learning-item">
-                    <span class="learning-icon">⚙️</span>
-                    <div class="learning-info">
-                        <span class="learning-name">Kubernetes</span>
-                        <span class="learning-detail">Container Orchestration</span>
+                    <div class="skill-category reveal">
+                        <h3 class="skill-cat-title"><span class="skill-cat-icon">&#127760;</span> <span data-i18n="skillsNetworking">Networking</span></h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag" data-level="90">TCP/IP</span>
+                            <span class="skill-tag" data-level="85">DNS</span>
+                            <span class="skill-tag" data-level="90">VPN</span>
+                            <span class="skill-tag" data-level="80">Firewalls</span>
+                            <span class="skill-tag" data-level="80">Routing</span>
+                            <span class="skill-tag" data-level="75">Cloudflare</span>
+                        </div>
                     </div>
-                    <div class="learning-progress"><div class="progress-bar" style="width: 30%"></div></div>
-                </div>
-            </div>
-        </section>
-
-
-        <section class="education">
-            <h2 data-i18n="eduTitle">// education</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2018 - 2021</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="eduDegree1">IT Systems & Network Administration</h3>
-                        <span class="company">IES Carles Vallbona</span>
-                        <p data-i18n="eduDesc1">Higher Technician Degree - Cybersecurity Profile</p>
+                    <div class="skill-category reveal">
+                        <h3 class="skill-cat-title"><span class="skill-cat-icon">&#128187;</span> <span data-i18n="skillsDev">Development</span></h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag" data-level="95">Python</span>
+                            <span class="skill-tag" data-level="85">Bash</span>
+                            <span class="skill-tag" data-level="70">JavaScript</span>
+                            <span class="skill-tag" data-level="65">Next.js</span>
+                            <span class="skill-tag" data-level="75">FastAPI</span>
+                            <span class="skill-tag" data-level="70">Git</span>
+                        </div>
                     </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2016 - 2018</div>
-                    <div class="timeline-content">
-                        <h3 data-i18n="eduDegree2">Microcomputer Systems & Networks</h3>
-                        <span class="company">INS Les Salines</span>
-                        <p data-i18n="eduDesc2">Middle Grade Degree</p>
+                    <div class="skill-category reveal">
+                        <h3 class="skill-cat-title"><span class="skill-cat-icon">&#9729;</span> <span data-i18n="skillsLearning">Learning</span></h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag learning" data-level="40">AWS</span>
+                            <span class="skill-tag learning" data-level="30">Kubernetes</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="certifications">
-            <h2 data-i18n="certTitle">// certifications</h2>
-            <div class="cert-grid">
-                <div class="cert-item">
-                    <span class="cert-icon">🏅</span>
-                    <div class="cert-info">
-                        <span class="cert-name">CCNA R&S: Introduction to Networks</span>
-                        <span class="cert-issuer">Cisco</span>
+        <!-- Projects -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title reveal" data-i18n="projTitle">// projects</h2>
+                <p class="section-subtitle reveal" data-i18n="projSubtitle">Personal infrastructure and automation projects</p>
+                <div class="projects-grid">
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#128253;</span>
+                            <div class="project-links">
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>Digital Fortress</h3>
+                        <p class="project-type" data-i18n="projDFType">Telegram Media Server</p>
+                        <p class="project-desc" data-i18n="projDFDesc">Full media server via Telegram with 5,300+ lines of Python. Automated downloads, cloud delivery, Radarr/Sonarr/Prowlarr integration, manga consolidation, and subscription notifications.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong>5,300+</strong> <span data-i18n="projLines">lines</span></span>
+                            <span class="pstat"><strong>22</strong> indexers</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>Python</span><span>Telegram</span><span>MongoDB</span><span>Docker</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#127909;</span>
+                            <div class="project-links">
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>Fortress Web</h3>
+                        <p class="project-type" data-i18n="projFWType">Anime/Manga Streaming</p>
+                        <p class="project-desc" data-i18n="projFWDesc">Full streaming platform with Next.js frontend and FastAPI backend. Auto-scan, MKV remux, PGS subtitle OCR, multi-source Spanish scrapers, and real-time episode monitoring.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong>17</strong> anime</span>
+                            <span class="pstat"><strong>20</strong> manga</span>
+                            <span class="pstat"><strong>9</strong> <span data-i18n="projScrapers">scrapers</span></span>
+                        </div>
+                        <div class="project-tags">
+                            <span>Next.js</span><span>FastAPI</span><span>React</span><span>Tailwind</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#9876;</span>
+                            <div class="project-links">
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>S&F Bot</h3>
+                        <p class="project-type" data-i18n="projSFType">Game Automation</p>
+                        <p class="project-desc" data-i18n="projSFDesc">Fully autonomous game bot with 6,350+ lines. Custom combat simulator v6.0, arena AI, pet strategy optimizer, fortress automation, and dice multi-roll handler.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong>6,350+</strong> <span data-i18n="projLines">lines</span></span>
+                            <span class="pstat"><strong>5</strong> <span data-i18n="projModules">modules</span></span>
+                        </div>
+                        <div class="project-tags">
+                            <span>Python</span><span>Combat AI</span><span>Automation</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#127939;</span>
+                            <div class="project-links">
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>BlogaBet Bot</h3>
+                        <p class="project-type" data-i18n="projBBType">Horse Racing Automation</p>
+                        <p class="project-desc" data-i18n="projBBDesc">Automated horse racing tipster bot. Scrapes BlogaBet picks, places bets via Stake.com GraphQL API, tracks P&L, and solves CAPTCHAs for premium picks.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong>Auto</strong> betting</span>
+                            <span class="pstat"><strong>P&L</strong> tracking</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>Python</span><span>Telegram</span><span>GraphQL</span><span>2Captcha</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#129302;</span>
+                            <div class="project-links">
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>PiBot v3</h3>
+                        <p class="project-type" data-i18n="projPBType">Pi Management Bot</p>
+                        <p class="project-desc" data-i18n="projPBDesc">Telegram bot for full Raspberry Pi management. WireGuard VPN control, Pi-hole admin, service monitoring with auto-restart, Google Drive backups, and hardware alerts.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong>1,630</strong> <span data-i18n="projLines">lines</span></span>
+                            <span class="pstat"><strong>24/7</strong> monitoring</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>Python</span><span>Telegram</span><span>WireGuard</span><span>Pi-hole</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#128274;</span>
+                            <div class="project-links">
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>WireGuard VPN</h3>
+                        <p class="project-type" data-i18n="projWGType">Secure Access Network</p>
+                        <p class="project-desc" data-i18n="projWGDesc">Personal VPN server on Raspberry Pi with 7 peers. Anti-bufferbloat tuning, Cloudflare DDNS, QR config generation, and automated peer management via Telegram.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong id="wg-peers-count">7</strong> peers</span>
+                            <span class="pstat"><strong>fq_codel</strong> QoS</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>WireGuard</span><span>Networking</span><span>Cloudflare</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#128737;</span>
+                            <div class="project-links">
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>Pi-hole</h3>
+                        <p class="project-type" data-i18n="projPHType">Network Ad Blocker</p>
+                        <p class="project-desc" data-i18n="projPHDesc">Network-wide ad blocker running Pi-hole v6. Blocks 770K+ domains including ads, trackers, malware, and crypto-mining for all devices on the network.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong>770K+</strong> <span data-i18n="projDomains">domains</span></span>
+                            <span class="pstat"><strong id="pihole-pct">--%</strong> <span data-i18n="projBlocked">blocked</span></span>
+                        </div>
+                        <div class="project-tags">
+                            <span>DNS</span><span>Privacy</span><span>Security</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-tilt>
+                        <div class="project-glow"></div>
+                        <div class="project-header">
+                            <span class="project-icon">&#128200;</span>
+                            <div class="project-links">
+                                <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener" class="project-ext-link">&#8599;</a>
+                                <span class="project-badge live">LIVE</span>
+                            </div>
+                        </div>
+                        <h3>Status Page</h3>
+                        <p class="project-type" data-i18n="projSPType">Service Monitoring</p>
+                        <p class="project-desc" data-i18n="projSPDesc">Real-time monitoring dashboard for all services. Checks every 30 seconds with uptime history and instant Telegram alerts on downtime.</p>
+                        <div class="project-stats">
+                            <span class="pstat"><strong>30s</strong> <span data-i18n="projInterval">interval</span></span>
+                            <span class="pstat"><strong>24/7</strong> alerts</span>
+                        </div>
+                        <div class="project-tags">
+                            <span>Node.js</span><span>Monitoring</span><span>DevOps</span>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Homelab -->
+        <section id="homelab" class="section">
+            <div class="container">
+                <h2 class="section-title reveal" data-i18n="homelabTitle">// homelab</h2>
+                <p class="section-subtitle reveal" data-i18n="homelabDesc">Raspberry Pi 5 server running 24/7</p>
+                <div class="homelab-grid">
+                    <div class="stat-card reveal">
+                        <div class="stat-ring" data-value="0" id="ring-status">
+                            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="ring-bg"/><circle cx="50" cy="50" r="42" class="ring-fill"/></svg>
+                            <span class="stat-ring-value" id="pi-status">--</span>
+                        </div>
+                        <span class="stat-label" data-i18n="statStatus">Status</span>
+                    </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-ring" data-value="0" id="ring-temp">
+                            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="ring-bg"/><circle cx="50" cy="50" r="42" class="ring-fill"/></svg>
+                            <span class="stat-ring-value" id="pi-temp">--</span>
+                        </div>
+                        <span class="stat-label" data-i18n="statTemp">Temp</span>
+                    </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-ring" data-value="0" id="ring-mem">
+                            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="ring-bg"/><circle cx="50" cy="50" r="42" class="ring-fill"/></svg>
+                            <span class="stat-ring-value" id="pi-memory">--</span>
+                        </div>
+                        <span class="stat-label" data-i18n="statMemory">Memory</span>
+                    </div>
+                    <div class="stat-card reveal">
+                        <div class="stat-ring" data-value="0" id="ring-block">
+                            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" class="ring-bg"/><circle cx="50" cy="50" r="42" class="ring-fill"/></svg>
+                            <span class="stat-ring-value" id="pi-blocked">--</span>
+                        </div>
+                        <span class="stat-label" data-i18n="statBlocked">Blocked</span>
                     </div>
                 </div>
-                <div class="cert-item">
-                    <span class="cert-icon">🏅</span>
-                    <div class="cert-info">
-                        <span class="cert-name">CCNA R&S: Routing & Switching Essentials</span>
-                        <span class="cert-issuer">Cisco</span>
+                <div class="homelab-extra reveal">
+                    <div class="homelab-info">
+                        <span><strong data-i18n="statUptime">Uptime</strong>: <span id="pi-uptime">--</span></span>
+                        <span><strong>WireGuard</strong>: <span id="wg-peers">--</span> peers</span>
+                        <span><strong>Pi-hole</strong>: <span id="pi-domains">--</span> <span data-i18n="projDomains">domains</span></span>
+                    </div>
+                    <a href="https://status.olivercdiaz.com" target="_blank" class="btn btn-ghost btn-sm">&#9889; Status Page</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certs -->
+        <section id="education" class="section">
+            <div class="container">
+                <div class="edu-certs-grid">
+                    <div>
+                        <h2 class="section-title reveal" data-i18n="eduTitle">// education</h2>
+                        <div class="edu-cards">
+                            <div class="edu-card reveal">
+                                <div class="edu-year">2018 - 2021</div>
+                                <h3 data-i18n="eduDegree1">IT Systems & Network Administration</h3>
+                                <span class="company">IES Carles Vallbona</span>
+                                <p data-i18n="eduDesc1">Higher Technician Degree - Cybersecurity Profile</p>
+                            </div>
+                            <div class="edu-card reveal">
+                                <div class="edu-year">2016 - 2018</div>
+                                <h3 data-i18n="eduDegree2">Microcomputer Systems & Networks</h3>
+                                <span class="company">INS Les Salines</span>
+                                <p data-i18n="eduDesc2">Middle Grade Degree</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h2 class="section-title reveal" data-i18n="certTitle">// certifications</h2>
+                        <div class="cert-cards">
+                            <div class="cert-card reveal">
+                                <span class="cert-icon">&#127941;</span>
+                                <div>
+                                    <h3>CCNA R&S: Introduction to Networks</h3>
+                                    <span class="company">Cisco</span>
+                                </div>
+                            </div>
+                            <div class="cert-card reveal">
+                                <span class="cert-icon">&#127941;</span>
+                                <div>
+                                    <h3>CCNA R&S: Routing & Switching Essentials</h3>
+                                    <span class="company">Cisco</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="pi-stats">
-            <h2 data-i18n="homelabTitle">// homelab</h2>
-            <p class="section-desc" data-i18n="homelabDesc">Personal Raspberry Pi server running 24/7</p>
-            <a href="https://status.olivercdiaz.com" target="_blank" class="status-link">⚡ status</a>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-icon">⚡</span>
-                    <span class="stat-label" data-i18n="statStatus">Status</span>
-                    <span class="stat-value online" id="pi-status">ONLINE</span>
+        <!-- Contact -->
+        <section id="contact" class="section">
+            <div class="container contact-container">
+                <h2 class="section-title reveal" data-i18n="contactTitle">// contact</h2>
+                <p class="section-subtitle reveal" data-i18n="contactDesc">Let's build something together</p>
+                <div class="contact-links reveal">
+                    <a href="https://www.linkedin.com/in/oliver-corral/" target="_blank" rel="noopener" class="contact-card magnetic">
+                        <span class="contact-icon">in</span>
+                        <span class="contact-name">LinkedIn</span>
+                        <span class="contact-arrow">&#8599;</span>
+                    </a>
+                    <a href="https://github.com/oliivercdiaz" target="_blank" rel="noopener" class="contact-card magnetic">
+                        <span class="contact-icon">gh</span>
+                        <span class="contact-name">GitHub</span>
+                        <span class="contact-arrow">&#8599;</span>
+                    </a>
+                    <a href="mailto:oliver@olivercdiaz.com" class="contact-card magnetic">
+                        <span class="contact-icon">@</span>
+                        <span class="contact-name">Email</span>
+                        <span class="contact-arrow">&#8599;</span>
+                    </a>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-icon">⏱</span>
-                    <span class="stat-label" data-i18n="statUptime">Uptime</span>
-                    <span class="stat-value" id="pi-uptime">--d --h</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🌡</span>
-                    <span class="stat-label" data-i18n="statTemp">Temp</span>
-                    <span class="stat-value" id="pi-temp">--°C</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">💾</span>
-                    <span class="stat-label" data-i18n="statMemory">Memory</span>
-                    <span class="stat-value" id="pi-memory">--%</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🛡</span>
-                    <span class="stat-label">Pi-hole</span>
-                    <span class="stat-value" id="pi-pihole-blocked">--</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">🚫</span>
-                    <span class="stat-label" data-i18n="statBlocked">Blocked</span>
-                    <span class="stat-value" id="pi-pihole-percent">--%</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-icon">📋</span>
-                    <span class="stat-label" data-i18n="statBlocklist">Blocklist</span>
-                    <span class="stat-value" id="pi-pihole-domains">--</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="projects">
-            <h2 data-i18n="projTitle">// projects</h2>
-            <div class="project-grid">
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <rect x="4" y="5" width="2" height="2" fill="currentColor"/>
-                            <rect x="10" y="5" width="2" height="2" fill="currentColor"/>
-                            <rect x="5" y="9" width="6" height="1" fill="currentColor"/>
-                            <rect x="4" y="10" width="1" height="1" fill="currentColor"/>
-                            <rect x="11" y="10" width="1" height="1" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>PiBot</h3>
-                    <p data-i18n="projPibotDesc">Telegram bot for remote Raspberry Pi management. Controls WireGuard VPN, Pi-hole v6, monitors public IP, and auto-updates dynamic DNS.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Telegram API</span>
-                        <span class="tag">Automation</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> Running
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="1" y="4" width="6" height="8" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <rect x="9" y="4" width="6" height="8" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <line x1="7" y1="8" x2="9" y2="8" stroke="currentColor" stroke-width="1"/>
-                            <rect x="3" y="6" width="2" height="2" fill="currentColor"/>
-                            <rect x="11" y="6" width="2" height="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>WireGuard VPN</h3>
-                    <p data-i18n="projWgDesc">Personal VPN server for secure remote access. Client management via Telegram with QR code generation.</p>
-                    <div class="project-tags">
-                        <span class="tag">WireGuard</span>
-                        <span class="tag">Networking</span>
-                        <span class="tag">Security</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> <span id="wg-peers">--</span> peers
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="4" y="2" width="8" height="1" fill="currentColor"/>
-                            <rect x="3" y="3" width="1" height="1" fill="currentColor"/>
-                            <rect x="12" y="3" width="1" height="1" fill="currentColor"/>
-                            <rect x="2" y="4" width="1" height="8" fill="currentColor"/>
-                            <rect x="13" y="4" width="1" height="8" fill="currentColor"/>
-                            <rect x="3" y="12" width="1" height="1" fill="currentColor"/>
-                            <rect x="12" y="12" width="1" height="1" fill="currentColor"/>
-                            <rect x="4" y="13" width="8" height="1" fill="currentColor"/>
-                            <rect x="7" y="4" width="2" height="5" fill="currentColor"/>
-                            <rect x="7" y="7" width="4" height="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Cloudflare Tunnel</h3>
-                    <p data-i18n="projCfDesc">Secure tunnel exposing local services to the internet without opening ports. Powers this site's live stats API.</p>
-                    <div class="project-tags">
-                        <span class="tag">Cloudflare</span>
-                        <span class="tag">API</span>
-                        <span class="tag">Infrastructure</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> Active
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="4" y="2" width="8" height="1" fill="currentColor"/>
-                            <rect x="3" y="3" width="1" height="1" fill="currentColor"/>
-                            <rect x="12" y="3" width="1" height="1" fill="currentColor"/>
-                            <rect x="2" y="4" width="1" height="8" fill="currentColor"/>
-                            <rect x="13" y="4" width="1" height="8" fill="currentColor"/>
-                            <rect x="3" y="12" width="1" height="1" fill="currentColor"/>
-                            <rect x="12" y="12" width="1" height="1" fill="currentColor"/>
-                            <rect x="4" y="13" width="8" height="1" fill="currentColor"/>
-                            <rect x="7" y="4" width="2" height="5" fill="currentColor"/>
-                            <rect x="7" y="11" width="2" height="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Pi-hole</h3>
-                    <p data-i18n="projPiholeDesc">Network-wide ad blocker running Pi-hole v6. Blocks 770K+ domains across ads, trackers, malware, and crypto-mining for all devices on the network.</p>
-                    <div class="project-tags">
-                        <span class="tag">DNS</span>
-                        <span class="tag">Privacy</span>
-                        <span class="tag">Ad Block</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> Blocking
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <rect x="4" y="5" width="2" height="2" fill="currentColor"/>
-                            <rect x="7" y="5" width="2" height="2" fill="currentColor"/>
-                            <rect x="10" y="5" width="2" height="2" fill="currentColor"/>
-                            <rect x="4" y="9" width="8" height="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Status Page</h3>
-                    <p data-i18n="projStatusDesc">Monitors all my services and shows if something goes down.</p>
-                    <div class="project-tags">
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Monitoring</span>
-                        <span class="tag">DevOps</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> Live
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section class="contact">
-            <h2 data-i18n="contactTitle">// contact</h2>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/oliver-corral/" target="_blank" rel="noopener" class="contact-link">
-                    <svg viewBox="0 0 16 16" class="pixel-icon">
-                        <rect x="1" y="1" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1"/>
-                        <rect x="3" y="6" width="2" height="7" fill="currentColor"/>
-                        <rect x="3" y="3" width="2" height="2" fill="currentColor"/>
-                        <rect x="6" y="6" width="2" height="7" fill="currentColor"/>
-                        <rect x="8" y="8" width="2" height="5" fill="currentColor"/>
-                        <rect x="10" y="6" width="2" height="7" fill="currentColor"/>
-                        <rect x="6" y="6" width="6" height="2" fill="currentColor"/>
-                    </svg>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/9olivercdiaz8" target="_blank" rel="noopener" class="contact-link">
-                    <svg viewBox="0 0 16 16" class="pixel-icon">
-                        <rect x="5" y="1" width="6" height="1" fill="currentColor"/>
-                        <rect x="3" y="2" width="2" height="1" fill="currentColor"/>
-                        <rect x="11" y="2" width="2" height="1" fill="currentColor"/>
-                        <rect x="2" y="3" width="1" height="2" fill="currentColor"/>
-                        <rect x="13" y="3" width="1" height="2" fill="currentColor"/>
-                        <rect x="1" y="5" width="1" height="4" fill="currentColor"/>
-                        <rect x="14" y="5" width="1" height="4" fill="currentColor"/>
-                        <rect x="2" y="9" width="1" height="2" fill="currentColor"/>
-                        <rect x="13" y="9" width="1" height="2" fill="currentColor"/>
-                        <rect x="3" y="11" width="2" height="1" fill="currentColor"/>
-                        <rect x="11" y="11" width="2" height="1" fill="currentColor"/>
-                        <rect x="5" y="12" width="2" height="1" fill="currentColor"/>
-                        <rect x="9" y="12" width="2" height="1" fill="currentColor"/>
-                        <rect x="4" y="13" width="1" height="2" fill="currentColor"/>
-                        <rect x="11" y="13" width="1" height="2" fill="currentColor"/>
-                        <rect x="5" y="6" width="2" height="2" fill="currentColor"/>
-                        <rect x="9" y="6" width="2" height="2" fill="currentColor"/>
-                    </svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="mailto:oliver@olivercdiaz.com" class="contact-link">
-                    <svg viewBox="0 0 16 16" class="pixel-icon">
-                        <rect x="1" y="3" width="14" height="10" fill="none" stroke="currentColor" stroke-width="1"/>
-                        <polyline points="1,3 8,9 15,3" fill="none" stroke="currentColor" stroke-width="1"/>
-                    </svg>
-                    <span>Email</span>
-                </a>
             </div>
         </section>
 
         <footer>
-            <p class="footer-quote" data-i18n="footerQuote">"I don't need a map - I'll build the route"</p>
-            <p class="footer-year" id="footer-year"></p>
+            <div class="footer-content">
+                <p class="footer-quote" data-i18n="footerQuote">"I don't need a map - I'll build the route"</p>
+                <p class="footer-copy">&copy; <span id="footer-year"></span> Oliver C. Diaz</p>
+            </div>
         </footer>
     </main>
 
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">&#9650;</button>
 
-    <!-- Coming Soon Modal - Cloud Bubble -->
-    <div id="coming-soon-modal" class="modal-overlay" onclick="hideComingSoon(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="cloud-container">
-                <span class="pixel-cloud"></span>
-                <span class="pixel-sparkle"></span>
-                <span class="pixel-sparkle"></span>
-                <span class="pixel-sparkle"></span>
-            </div>
-            <h3 class="coming-soon-title" data-i18n="comingSoon">Coming Soon</h3>
-            <p class="coming-soon-text" data-i18n="comingSoonText">CV under construction</p>
-            <button class="modal-close" onclick="hideComingSoon(event)">&times;</button>
-        </div>
-    </div>
-
-    <script src="script.js?v=1769705242"></script>
+    <script src="script.js"></script>
 </body>
 </html>
