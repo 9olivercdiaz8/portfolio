@@ -82,8 +82,8 @@ img{max-width:100%}
 .nav-controls{display:flex;gap:.3rem}
 .nav-btn{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:none;border-radius:50%;background:var(--surface2);color:var(--text);cursor:none;font-family:var(--mono);font-size:.7rem;font-weight:700;transition:all .3s}
 .nav-btn:hover{background:var(--accent);color:var(--bg)}
-.theme-icon::before{content:'\\263E';font-size:1rem}
-[data-theme="light"] .theme-icon::before{content:'\\2600'}
+.theme-icon::before{content:'\263E';font-size:1rem}
+[data-theme="light"] .theme-icon::before{content:'\2600'}
 .nav-hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:none;padding:6px}
 .nav-hamburger span{width:20px;height:2px;background:var(--text);border-radius:1px;transition:all .3s}
 .nav-hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
