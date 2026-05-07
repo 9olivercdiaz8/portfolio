@@ -17,35 +17,35 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="nav">
     <div class="nav-inner">
       <a href="#top" class="logo">OCD<span class="dot-accent">.</span></a>
       <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#homelab">Homelab</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-i18n="nav-about">About</a>
+        <a href="#experience" data-i18n="nav-exp">Experience</a>
+        <a href="#projects" data-i18n="nav-projects">Projects</a>
+        <a href="#homelab" data-i18n="nav-homelab">Homelab</a>
+        <a href="#contact" data-i18n="nav-contact">Contact</a>
       </div>
       <button id="burger" class="burger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div id="mobile-menu" class="mobile-menu">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#homelab">Homelab</a>
-      <a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav-about">About</a>
+      <a href="#experience" data-i18n="nav-exp">Experience</a>
+      <a href="#projects" data-i18n="nav-projects">Projects</a>
+      <a href="#homelab" data-i18n="nav-homelab">Homelab</a>
+      <a href="#contact" data-i18n="nav-contact">Contact</a>
     </div>
   </nav>
 
   <div id="status-bar" class="status-bar">
     <span id="sb-dot" class="sb-dot"></span>
-    <span id="sb-text">Comprobando servicios…</span>
-    <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener" class="sb-link">Ver estado →</a>
+    <span id="sb-text" data-i18n="sb-checking">Comprobando servicios…</span>
+    <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener" class="sb-link" data-i18n="sb-link">Ver estado →</a>
   </div>
+
   <main id="top">
 
     <!-- HERO -->
@@ -53,7 +53,7 @@
       <div class="hero-content">
         <div class="hero-location fade-up">
           <span class="pulse-dot"></span>
-          Barcelona, Spain
+          <span data-i18n="hero-location">Barcelona, Spain</span>
         </div>
         <h1 class="hero-name fade-up">
           Oliver<br>
@@ -62,12 +62,12 @@
         <div class="hero-role fade-up">
           <span class="role-prefix">_</span>IT Specialist <span class="amp">&amp;</span> Developer
         </div>
-        <p class="hero-sub fade-up">
+        <p class="hero-sub fade-up" data-i18n-html="hero-sub">
           Redes, Linux y automatización. Si puede hacerse automático,<br class="br-desk"> lo hago automático.
         </p>
         <div class="hero-actions fade-up">
-          <a href="#projects" class="btn-cta">Ver proyectos</a>
-          <a href="#contact" class="btn-outline">Contacto</a>
+          <a href="#projects" class="btn-cta" data-i18n="hero-cta1">Ver proyectos</a>
+          <a href="#contact" class="btn-outline" data-i18n="hero-cta2">Contacto</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -92,16 +92,16 @@
     <!-- ABOUT -->
     <section class="section" id="about">
       <div class="wrap">
-        <div class="section-label">01 — About</div>
+        <div class="section-label" data-i18n="sec-about">01 — About</div>
         <div class="about-grid">
           <div class="about-text">
-            <h2>Developer curioso<br>con base en Barcelona.</h2>
-            <p>Me muevo entre redes, sistemas Linux y automatización. Trabajo con infraestructura real — VPNs, DNS, servidores propios, bots y apps que corren 24/7 en hardware que tengo en casa.</p>
-            <p>Si algo se repite más de dos veces, escribo un script. Si algo puede estar siempre disponible, lo levanto en mi Pi.</p>
+            <h2 data-i18n-html="about-h2">Developer curioso<br>con base en Barcelona.</h2>
+            <p data-i18n="about-p1">Me muevo entre redes, sistemas Linux y automatización. Trabajo con infraestructura real — VPNs, DNS, servidores propios, bots y apps que corren 24/7 en hardware que tengo en casa.</p>
+            <p data-i18n="about-p2">Si algo se repite más de dos veces, escribo un script. Si algo puede estar siempre disponible, lo levanto en mi Pi.</p>
           </div>
           <div class="skills-col">
             <div class="skill-group">
-              <div class="skill-label">Sistemas & Red</div>
+              <div class="skill-label" data-i18n="skill-sys">Sistemas & Red</div>
               <div class="skill-tags">
                 <span>Linux</span><span>Debian</span><span>systemd</span>
                 <span>WireGuard</span><span>Cloudflare</span><span>Pi-hole</span>
@@ -109,7 +109,7 @@
               </div>
             </div>
             <div class="skill-group">
-              <div class="skill-label">Código</div>
+              <div class="skill-label" data-i18n="skill-code">Código</div>
               <div class="skill-tags">
                 <span>Python</span><span>Node.js</span><span>TypeScript</span>
                 <span>React</span><span>Bash</span><span>SQL</span>
@@ -130,8 +130,8 @@
     <!-- EXPERIENCE -->
     <section class="section section-dark" id="experience">
       <div class="wrap">
-        <div class="section-label">02 — Experience</div>
-        <h2 class="section-title">Donde he trabajado.</h2>
+        <div class="section-label" data-i18n="sec-exp">02 — Experience</div>
+        <h2 class="section-title" data-i18n="exp-h2">Donde he trabajado.</h2>
         <div class="timeline">
 
           <div class="tl-item">
@@ -140,11 +140,11 @@
               <div class="tl-header">
                 <div>
                   <div class="tl-company">IRIUM</div>
-                  <div class="tl-role">Help Desk & IT Consultant · Dept. Educació Catalunya</div>
+                  <div class="tl-role" data-i18n="irium-role">Help Desk & IT Consultant · Dept. Educació Catalunya</div>
                 </div>
-                <div class="tl-date">2024 — Actual</div>
+                <div class="tl-date" data-i18n="irium-date">2024 — Actual</div>
               </div>
-              <p class="tl-desc">Consultoría IT para el Departament d'Educació de la Generalitat de Catalunya. Soporte y administración de sistemas, gestión de infraestructura y resolución de incidencias técnicas.</p>
+              <p class="tl-desc" data-i18n="irium-desc">Consultoría IT para el Departament d'Educació de la Generalitat de Catalunya.</p>
               <div class="tl-tags">
                 <span>IT Support</span><span>Sistemas</span><span>Redes</span><span>Administración pública</span>
               </div>
@@ -157,11 +157,11 @@
               <div class="tl-header">
                 <div>
                   <div class="tl-company">Netland SL</div>
-                  <div class="tl-role">Técnico IT</div>
+                  <div class="tl-role" data-i18n="netland-role">Técnico IT</div>
                 </div>
                 <div class="tl-date">2023</div>
               </div>
-              <p class="tl-desc">Instalación y mantenimiento de redes, soporte técnico y administración de infraestructura informática.</p>
+              <p class="tl-desc" data-i18n="netland-desc">Instalación y mantenimiento de redes, soporte técnico y administración de infraestructura informática.</p>
               <div class="tl-tags">
                 <span>Networking</span><span>Hardware</span><span>Soporte</span>
               </div>
@@ -174,11 +174,11 @@
               <div class="tl-header">
                 <div>
                   <div class="tl-company">Plasticband</div>
-                  <div class="tl-role">IT & Sistemas</div>
+                  <div class="tl-role" data-i18n="plastic-role">IT & Sistemas</div>
                 </div>
                 <div class="tl-date">2022</div>
               </div>
-              <p class="tl-desc">Mantenimiento de sistemas internos, soporte a usuarios y gestión de equipos e infraestructura de red.</p>
+              <p class="tl-desc" data-i18n="plastic-desc">Mantenimiento de sistemas internos, soporte a usuarios y gestión de equipos e infraestructura de red.</p>
               <div class="tl-tags">
                 <span>Sistemas</span><span>Soporte</span><span>Redes</span>
               </div>
@@ -192,9 +192,9 @@
     <!-- PROJECTS -->
     <section class="section" id="projects">
       <div class="wrap">
-        <div class="section-label">03 — Projects</div>
-        <h2 class="section-title">Lo que he construido.</h2>
-        <p class="section-sub">Proyectos reales, todos en producción.</p>
+        <div class="section-label" data-i18n="sec-proj">03 — Projects</div>
+        <h2 class="section-title" data-i18n="proj-h2">Lo que he construido.</h2>
+        <p class="section-sub" data-i18n="proj-sub">Proyectos reales, todos en producción.</p>
 
         <div class="projects-grid">
 
@@ -204,9 +204,9 @@
               <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>LET Prep</h3>
-            <p>PWA de estudio para el examen de profesores de Filipinas. SRS (repetición espaciada), exámenes mock, biblioteca de 760MB de PDFs, notas personales y 119 fichas de estudio por tema.</p>
+            <p data-i18n="let-desc">PWA de estudio para el examen de profesores de Filipinas. SRS (repetición espaciada), exámenes mock, biblioteca de 760MB de PDFs, notas personales y 119 fichas de estudio por tema.</p>
             <div class="pc-tags">
-              <span>React</span><span>TypeScript</span><span>Hono</span><span>PWA</span><span>IA</span>
+              <span>React</span><span>TypeScript</span><span>Hono</span><span>PWA</span>
             </div>
             <div class="pc-link">let.olivercdiaz.com →</div>
           </a>
@@ -217,7 +217,7 @@
               <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>PiBot</h3>
-            <p>Bot de Telegram para gestionar la Raspberry Pi remotamente. Controla WireGuard, monitorea IP pública, actualiza DNS dinámico y hace backups automáticos a Google Drive.</p>
+            <p data-i18n="pibot-desc">Bot de Telegram para gestionar la Raspberry Pi remotamente. Controla WireGuard, monitorea IP pública, actualiza DNS dinámico y hace backups automáticos a Google Drive.</p>
             <div class="pc-tags">
               <span>Python</span><span>Telegram API</span><span>Linux</span><span>Automation</span>
             </div>
@@ -229,7 +229,7 @@
               <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>S&amp;F Bot</h3>
-            <p>Bot autónomo para Shakes &amp; Fidget. Gestiona arena, quests, herrería, mascotas y subterráneo. +5.000 líneas de Python con estrategias matemáticas propias para cada modo de juego.</p>
+            <p data-i18n="sf-desc">Bot autónomo para Shakes &amp; Fidget. Gestiona arena, quests, herrería, mascotas y subterráneo. +5.000 líneas de Python con estrategias matemáticas propias para cada modo de juego.</p>
             <div class="pc-tags">
               <span>Python</span><span>Automation</span><span>Game API</span>
             </div>
@@ -241,13 +241,12 @@
               <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>Status Page</h3>
-            <p>Monitor de estado en tiempo real para mis servicios. WebSocket para updates live sin recargar, historial de uptime de 90 días y soporte en 3 idiomas.</p>
+            <p data-i18n="status-desc">Monitor de estado en tiempo real para mis servicios. WebSocket para updates live sin recargar, historial de uptime de 90 días y soporte en 3 idiomas.</p>
             <div class="pc-tags">
               <span>Node.js</span><span>WebSocket</span><span>Express</span>
             </div>
             <div class="pc-link">status.olivercdiaz.com →</div>
           </a>
-
 
           <div class="project-card">
             <div class="pc-top">
@@ -255,9 +254,9 @@
               <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>Remedy Bot</h3>
-            <p>Bot de automatización completa para Remedy ITSM. Sin API — usa scraping de navegador para leer, categorizar y resolver incidencias automáticamente. Genera respuestas en el idioma correcto listas para pegar, con umbral de confianza configurable, detección de VIPs y kill switch de seguridad.</p>
+            <p data-i18n="remedy-desc">Bot de automatización completa para Remedy ITSM. Sin API — usa scraping de navegador para leer, categorizar y resolver incidencias automáticamente. Genera respuestas en el idioma correcto listas para pegar, con umbral de confianza configurable, detección de VIPs y kill switch de seguridad.</p>
             <div class="pc-tags">
-              <span>Node.js</span><span>Playwright</span><span>Automation</span><span>ITSM</span><span>Windows</span>
+              <span>Node.js</span><span>Playwright</span><span>Automation</span><span>ITSM</span>
             </div>
           </div>
 
@@ -268,16 +267,15 @@
     <!-- HOMELAB -->
     <section class="section section-dark" id="homelab">
       <div class="wrap">
-        <div class="section-label">04 — Homelab</div>
-        <h2 class="section-title">Infraestructura propia.</h2>
-        <p class="section-sub">Raspberry Pi 5 · 8GB · Debian 13 · corriendo 24/7</p>
+        <div class="section-label" data-i18n="sec-hl">04 — Homelab</div>
+        <h2 class="section-title" data-i18n="hl-h2">Infraestructura propia.</h2>
+        <p class="section-sub" data-i18n="hl-sub">Raspberry Pi 5 · 8GB · Debian 13 · corriendo 24/7</p>
 
         <div class="homelab-layout">
-
           <div class="hl-left">
             <div class="hl-services" id="hl-services">
               <div class="hl-row loading">
-                <span>Cargando estado en vivo…</span>
+                <span data-i18n="hl-loading">Cargando estado en vivo…</span>
               </div>
             </div>
             <div class="hl-tech">
@@ -287,15 +285,14 @@
               <span>fail2ban</span>
               <span>PM2</span>
               <span>rkhunter</span>
-              <span>Backups diarios</span>
+              <span data-i18n="hl-backup">Backups diarios</span>
               <span>Google Drive sync</span>
             </div>
           </div>
-
           <div class="hl-right">
             <div class="hl-stat">
               <div class="hl-stat-val accent" id="stat-uptime">—</div>
-              <div class="hl-stat-label">Uptime</div>
+              <div class="hl-stat-label" data-i18n="stat-uptime-label">Uptime</div>
             </div>
             <div class="hl-stat">
               <div class="hl-stat-val accent">8 GB</div>
@@ -303,14 +300,13 @@
             </div>
             <div class="hl-stat">
               <div class="hl-stat-val accent">117 GB</div>
-              <div class="hl-stat-label">Disco</div>
+              <div class="hl-stat-label" data-i18n="stat-disk">Disco</div>
             </div>
             <div class="hl-stat">
               <div class="hl-stat-val accent" id="stat-temp">—</div>
-              <div class="hl-stat-label">Temperatura</div>
+              <div class="hl-stat-label" data-i18n="stat-temp">Temperatura</div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -318,9 +314,9 @@
     <!-- CONTACT -->
     <section class="section" id="contact">
       <div class="wrap contact-wrap">
-        <div class="section-label">05 — Contact</div>
-        <h2 class="section-title">Hablemos.</h2>
-        <p class="contact-desc">¿Tienes un proyecto, una propuesta o simplemente quieres hablar de IT? Aquí me tienes.</p>
+        <div class="section-label" data-i18n="sec-contact">05 — Contact</div>
+        <h2 class="section-title" data-i18n="contact-h2">Hablemos.</h2>
+        <p class="contact-desc" data-i18n="contact-desc">¿Tienes un proyecto, una propuesta o simplemente quieres hablar de IT? Aquí me tienes.</p>
         <div class="contact-cards">
           <a href="https://www.linkedin.com/in/oliver-corral/" target="_blank" rel="noopener" class="contact-card">
             <div class="cc-icon">
