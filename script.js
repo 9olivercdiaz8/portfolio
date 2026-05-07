@@ -99,10 +99,9 @@ const T = {
 };
 
 function detectLang() {
-  const l = navigator.language || 'en';
+  const l = navigator.language || 'es';
   if (l.startsWith('ca')) return 'ca';
-  if (l.startsWith('es')) return 'es';
-  return 'en';
+  return 'es';
 }
 
 function applyLang(lang) {
@@ -126,25 +125,9 @@ function applyLang(lang) {
 function getSavedLang() { return localStorage.getItem('portfolio-lang'); }
 function saveLang(l) { localStorage.setItem('portfolio-lang', l); }
 
-function updateLangButtons(lang) {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-}
-
 const initialLang = getSavedLang() || detectLang();
 applyLang(initialLang);
-updateLangButtons(initialLang);
 
-// Wire up buttons
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const l = btn.dataset.lang;
-    saveLang(l);
-    applyLang(l);
-    updateLangButtons(l);
-  });
-});
 
 // ===== NAV SCROLL =====
 const nav = document.getElementById('nav');
