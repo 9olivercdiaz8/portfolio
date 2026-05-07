@@ -122,7 +122,29 @@ function applyLang(lang) {
   window._lang = lang;
 }
 
-applyLang(detectLang());
+// Load saved language or detect from browser
+function getSavedLang() { return localStorage.getItem('portfolio-lang'); }
+function saveLang(l) { localStorage.setItem('portfolio-lang', l); }
+
+function updateLangButtons(lang) {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+}
+
+const initialLang = getSavedLang() || detectLang();
+applyLang(initialLang);
+updateLangButtons(initialLang);
+
+// Wire up buttons
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const l = btn.dataset.lang;
+    saveLang(l);
+    applyLang(l);
+    updateLangButtons(l);
+  });
+});
 
 // ===== NAV SCROLL =====
 const nav = document.getElementById('nav');
