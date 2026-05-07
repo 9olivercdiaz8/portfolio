@@ -4,254 +4,331 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oliver C. Díaz — IT & Developer</title>
-  <meta name="description" content="IT specialist y developer. Redes, sistemas Linux, automatización e infraestructura propia. Barcelona.">
+  <meta name="description" content="IT Specialist y Developer en Barcelona. Redes, sistemas Linux, automatización e infraestructura propia.">
   <meta property="og:title" content="Oliver C. Díaz — IT & Developer">
-  <meta property="og:description" content="IT specialist y developer. Redes, sistemas Linux, automatización e infraestructura propia.">
+  <meta property="og:description" content="IT Specialist y Developer. Redes, Linux, automatización.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://olivercdiaz.com">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- NAV -->
   <nav id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">ocd<span class="accent">.</span></a>
+      <a href="#top" class="logo">OCD<span class="dot-accent">.</span></a>
       <div class="nav-links">
-        <a href="#about">about</a>
-        <a href="#projects">projects</a>
-        <a href="#homelab">homelab</a>
-        <a href="#contact">contact</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#homelab">Homelab</a>
+        <a href="#contact">Contact</a>
       </div>
-      <button class="nav-burger" id="burger" aria-label="Menu">
+      <button id="burger" class="burger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div class="nav-mobile" id="mobile-nav">
-      <a href="#about" class="mobile-link">about</a>
-      <a href="#projects" class="mobile-link">projects</a>
-      <a href="#homelab" class="mobile-link">homelab</a>
-      <a href="#contact" class="mobile-link">contact</a>
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#homelab">Homelab</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <main>
+  <main id="top">
 
     <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="hero-inner">
-        <div class="hero-tag reveal">
-          <span class="dot online"></span>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-location fade-up">
+          <span class="pulse-dot"></span>
           Barcelona, Spain
         </div>
-        <h1 class="hero-name reveal">Oliver<br>C. Díaz</h1>
-        <p class="hero-role reveal">IT Specialist <span class="accent">&amp;</span> Developer</p>
-        <p class="hero-desc reveal">
-          Redes, Linux, automatización e infraestructura.<br>
-          Si algo se puede automatizar, lo automatizo.
+        <h1 class="hero-name fade-up">
+          Oliver<br>
+          <span class="name-outline">C. Díaz</span>
+        </h1>
+        <div class="hero-role fade-up">
+          <span class="role-prefix">_</span>IT Specialist <span class="amp">&amp;</span> Developer
+        </div>
+        <p class="hero-sub fade-up">
+          Redes, Linux y automatización. Si puede hacerse automático,<br class="br-desk"> lo hago automático.
         </p>
-        <div class="hero-cta reveal">
-          <a href="#projects" class="btn-primary">Ver proyectos</a>
-          <a href="#contact" class="btn-ghost">Contacto</a>
+        <div class="hero-actions fade-up">
+          <a href="#projects" class="btn-cta">Ver proyectos</a>
+          <a href="#contact" class="btn-outline">Contacto</a>
         </div>
       </div>
-      <div class="hero-grid-bg"></div>
+      <div class="hero-visual">
+        <div class="terminal fade-up">
+          <div class="term-bar">
+            <span class="tb red"></span><span class="tb yellow"></span><span class="tb green"></span>
+            <span class="term-title">oliver@pi:~</span>
+          </div>
+          <div class="term-body">
+            <div class="term-line"><span class="term-prompt">$</span> uptime</div>
+            <div class="term-line term-out" id="term-uptime">4 days, 8 hours</div>
+            <div class="term-line"><span class="term-prompt">$</span> systemctl list-units --state=running | wc -l</div>
+            <div class="term-line term-out">11</div>
+            <div class="term-line"><span class="term-prompt">$</span> vcgencmd measure_temp</div>
+            <div class="term-line term-out" id="term-temp">temp=49.4'C</div>
+            <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">▋</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ABOUT -->
     <section class="section" id="about">
-      <div class="section-inner">
-        <h2 class="section-title reveal"><span class="mono accent">//</span> about</h2>
+      <div class="wrap">
+        <div class="section-label">01 — About</div>
         <div class="about-grid">
-          <div class="about-text reveal">
-            <p>
-              Developer y especialista en IT con base en Barcelona. Me muevo entre
-              redes, sistemas Linux y automatización. Si algo se repite, escribo un
-              script. Si algo puede estar en la nube, lo pongo en casa.
-            </p>
-            <p>
-              Actualmente trabajo en proyectos propios y mantengo una infraestructura
-              completa en una Raspberry Pi 5 — apps, bots, VPN, DNS y backups, todo
-              corriendo 24/7.
-            </p>
+          <div class="about-text">
+            <h2>Developer curioso<br>con base en Barcelona.</h2>
+            <p>Me muevo entre redes, sistemas Linux y automatización. Trabajo con infraestructura real — VPNs, DNS, servidores propios, bots y apps que corren 24/7 en hardware que tengo en casa.</p>
+            <p>Si algo se repite más de dos veces, escribo un script. Si algo puede estar siempre disponible, lo levanto en mi Pi.</p>
           </div>
-          <div class="about-stack reveal">
-            <div class="stack-group">
-              <span class="stack-label">Sistemas</span>
-              <div class="tags">
-                <span class="tag">Linux</span>
-                <span class="tag">Debian</span>
-                <span class="tag">systemd</span>
-                <span class="tag">Raspberry Pi</span>
+          <div class="skills-col">
+            <div class="skill-group">
+              <div class="skill-label">Sistemas & Red</div>
+              <div class="skill-tags">
+                <span>Linux</span><span>Debian</span><span>systemd</span>
+                <span>WireGuard</span><span>Cloudflare</span><span>Pi-hole</span>
+                <span>Nginx</span><span>fail2ban</span>
               </div>
             </div>
-            <div class="stack-group">
-              <span class="stack-label">Red</span>
-              <div class="tags">
-                <span class="tag">WireGuard</span>
-                <span class="tag">Cloudflare</span>
-                <span class="tag">Pi-hole</span>
-                <span class="tag">Nginx</span>
+            <div class="skill-group">
+              <div class="skill-label">Código</div>
+              <div class="skill-tags">
+                <span>Python</span><span>Node.js</span><span>TypeScript</span>
+                <span>React</span><span>Bash</span><span>SQL</span>
               </div>
             </div>
-            <div class="stack-group">
-              <span class="stack-label">Código</span>
-              <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Node.js</span>
-                <span class="tag">TypeScript</span>
-                <span class="tag">React</span>
-                <span class="tag">Bash</span>
+            <div class="skill-group">
+              <div class="skill-label">Tools</div>
+              <div class="skill-tags">
+                <span>Git</span><span>PM2</span><span>Raspberry Pi</span>
+                <span>Telegram API</span><span>Cloudflare Tunnel</span>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section section-dark" id="experience">
+      <div class="wrap">
+        <div class="section-label">02 — Experience</div>
+        <h2 class="section-title">Donde he trabajado.</h2>
+        <div class="timeline">
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-company">IRIUM</div>
+                  <div class="tl-role">Help Desk & IT Consultant · Dept. Educació Catalunya</div>
+                </div>
+                <div class="tl-date">2024 — Actual</div>
+              </div>
+              <p class="tl-desc">Consultoría IT para el Departament d'Educació de la Generalitat de Catalunya. Soporte y administración de sistemas, gestión de infraestructura y resolución de incidencias técnicas.</p>
+              <div class="tl-tags">
+                <span>IT Support</span><span>Sistemas</span><span>Redes</span><span>Administración pública</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-company">Netland SL</div>
+                  <div class="tl-role">Técnico IT</div>
+                </div>
+                <div class="tl-date">2023</div>
+              </div>
+              <p class="tl-desc">Instalación y mantenimiento de redes, soporte técnico y administración de infraestructura informática.</p>
+              <div class="tl-tags">
+                <span>Networking</span><span>Hardware</span><span>Soporte</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <div class="tl-header">
+                <div>
+                  <div class="tl-company">Plasticband</div>
+                  <div class="tl-role">IT & Sistemas</div>
+                </div>
+                <div class="tl-date">2022</div>
+              </div>
+              <p class="tl-desc">Mantenimiento de sistemas internos, soporte a usuarios y gestión de equipos e infraestructura de red.</p>
+              <div class="tl-tags">
+                <span>Sistemas</span><span>Soporte</span><span>Redes</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
     <section class="section" id="projects">
-      <div class="section-inner">
-        <h2 class="section-title reveal"><span class="mono accent">//</span> projects</h2>
-        <p class="section-sub reveal">Proyectos reales, todos en producción.</p>
+      <div class="wrap">
+        <div class="section-label">03 — Projects</div>
+        <h2 class="section-title">Lo que he construido.</h2>
+        <p class="section-sub">Proyectos reales, todos en producción.</p>
+
         <div class="projects-grid">
 
-          <article class="project-card reveal">
-            <div class="card-top">
-              <span class="card-icon">🎓</span>
-              <div class="card-status live">
-                <span class="dot online"></span> Live
-              </div>
+          <a href="https://let.olivercdiaz.com" target="_blank" rel="noopener" class="project-card featured">
+            <div class="pc-top">
+              <span class="pc-icon">🎓</span>
+              <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>LET Prep</h3>
-            <p>App de estudio para el examen de profesores de Filipinas. PWA con SRS, exámenes mock, biblioteca de PDFs, notas y fichas de estudio generadas por IA.</p>
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">Node.js</span>
-              <span class="tag">Hono</span>
-              <span class="tag">PWA</span>
+            <p>PWA de estudio para el examen de profesores de Filipinas. SRS (repetición espaciada), exámenes mock, biblioteca de 760MB de PDFs, notas personales y 119 fichas de estudio generadas con IA.</p>
+            <div class="pc-tags">
+              <span>React</span><span>TypeScript</span><span>Hono</span><span>PWA</span><span>IA</span>
             </div>
-            <a href="https://let.olivercdiaz.com" target="_blank" rel="noopener" class="card-link">let.olivercdiaz.com →</a>
-          </article>
+            <div class="pc-link">let.olivercdiaz.com →</div>
+          </a>
 
-          <article class="project-card reveal">
-            <div class="card-top">
-              <span class="card-icon">🤖</span>
-              <div class="card-status live">
-                <span class="dot online"></span> Live
-              </div>
+          <div class="project-card">
+            <div class="pc-top">
+              <span class="pc-icon">🤖</span>
+              <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>PiBot</h3>
-            <p>Bot de Telegram para gestionar la Raspberry Pi. Control de WireGuard, DNS dinámico, monitorización de IP y backups automáticos a Google Drive.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Telegram API</span>
-              <span class="tag">Linux</span>
+            <p>Bot de Telegram para gestionar la Raspberry Pi remotamente. Controla WireGuard, monitorea IP pública, actualiza DNS dinámico y hace backups automáticos a Google Drive.</p>
+            <div class="pc-tags">
+              <span>Python</span><span>Telegram API</span><span>Linux</span><span>Automation</span>
             </div>
-          </article>
+          </div>
 
-          <article class="project-card reveal">
-            <div class="card-top">
-              <span class="card-icon">🎮</span>
-              <div class="card-status live">
-                <span class="dot online"></span> Live
-              </div>
+          <div class="project-card">
+            <div class="pc-top">
+              <span class="pc-icon">🎮</span>
+              <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>S&amp;F Bot</h3>
-            <p>Bot autónomo para el juego Shakes &amp; Fidget. Gestión de arena, quests, herrería, mascotas y subterráneo. Más de 5.000 líneas de Python.</p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Automation</span>
-              <span class="tag">Game API</span>
+            <p>Bot autónomo para Shakes &amp; Fidget. Gestiona arena, quests, herrería, mascotas y subterráneo. +5.000 líneas de Python con estrategias matemáticas propias para cada modo de juego.</p>
+            <div class="pc-tags">
+              <span>Python</span><span>Automation</span><span>Game API</span>
             </div>
-          </article>
+          </div>
 
-          <article class="project-card reveal">
-            <div class="card-top">
-              <span class="card-icon">📊</span>
-              <div class="card-status live">
-                <span class="dot online"></span> Live
-              </div>
+          <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener" class="project-card">
+            <div class="pc-top">
+              <span class="pc-icon">📊</span>
+              <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>Status Page</h3>
-            <p>Página de estado en tiempo real para mis servicios. WebSocket para actualizaciones live, historial de uptime de 90 días y soporte i18n.</p>
-            <div class="tags">
-              <span class="tag">Node.js</span>
-              <span class="tag">WebSocket</span>
-              <span class="tag">Express</span>
+            <p>Monitor de estado en tiempo real para mis servicios. WebSocket para updates live sin recargar, historial de uptime de 90 días y soporte en 3 idiomas.</p>
+            <div class="pc-tags">
+              <span>Node.js</span><span>WebSocket</span><span>Express</span>
             </div>
-            <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener" class="card-link">status.olivercdiaz.com →</a>
-          </article>
+            <div class="pc-link">status.olivercdiaz.com →</div>
+          </a>
 
         </div>
       </div>
     </section>
 
     <!-- HOMELAB -->
-    <section class="section section-alt" id="homelab">
-      <div class="section-inner">
-        <h2 class="section-title reveal"><span class="mono accent">//</span> homelab</h2>
-        <p class="section-sub reveal">Raspberry Pi 5 · 8GB RAM · Debian 13 · 24/7</p>
-        <div class="homelab-grid">
-          <div class="homelab-services reveal" id="live-services">
-            <div class="service-row loading">
-              <span class="service-name">Cargando estado en vivo...</span>
+    <section class="section section-dark" id="homelab">
+      <div class="wrap">
+        <div class="section-label">04 — Homelab</div>
+        <h2 class="section-title">Infraestructura propia.</h2>
+        <p class="section-sub">Raspberry Pi 5 · 8GB · Debian 13 · corriendo 24/7</p>
+
+        <div class="homelab-layout">
+
+          <div class="hl-left">
+            <div class="hl-services" id="hl-services">
+              <div class="hl-row loading">
+                <span>Cargando estado en vivo…</span>
+              </div>
+            </div>
+            <div class="hl-tech">
+              <span>WireGuard VPN</span>
+              <span>Pi-hole DNS</span>
+              <span>Cloudflare Tunnel</span>
+              <span>fail2ban</span>
+              <span>PM2</span>
+              <span>rkhunter</span>
+              <span>Backups diarios</span>
+              <span>Google Drive sync</span>
             </div>
           </div>
-          <div class="homelab-specs reveal">
-            <div class="spec-card">
-              <div class="spec-value accent">8GB</div>
-              <div class="spec-label">RAM</div>
+
+          <div class="hl-right">
+            <div class="hl-stat">
+              <div class="hl-stat-val accent" id="stat-uptime">—</div>
+              <div class="hl-stat-label">Uptime</div>
             </div>
-            <div class="spec-card">
-              <div class="spec-value accent">117GB</div>
-              <div class="spec-label">Almacenamiento</div>
+            <div class="hl-stat">
+              <div class="hl-stat-val accent">8 GB</div>
+              <div class="hl-stat-label">RAM</div>
             </div>
-            <div class="spec-card">
-              <div class="spec-value accent">49°C</div>
-              <div class="spec-label">Temperatura</div>
+            <div class="hl-stat">
+              <div class="hl-stat-val accent">117 GB</div>
+              <div class="hl-stat-label">Disco</div>
             </div>
-            <div class="spec-card">
-              <div class="spec-value accent" id="uptime-days">—</div>
-              <div class="spec-label">Uptime</div>
+            <div class="hl-stat">
+              <div class="hl-stat-val accent" id="stat-temp">—</div>
+              <div class="hl-stat-label">Temperatura</div>
             </div>
           </div>
-        </div>
-        <div class="homelab-stack reveal">
-          <span class="hl-tag">WireGuard VPN</span>
-          <span class="hl-tag">Pi-hole DNS</span>
-          <span class="hl-tag">Cloudflare Tunnel</span>
-          <span class="hl-tag">PM2</span>
-          <span class="hl-tag">fail2ban</span>
-          <span class="hl-tag">logrotate</span>
-          <span class="hl-tag">rkhunter</span>
-          <span class="hl-tag">Backups diarios</span>
+
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section class="section" id="contact">
-      <div class="section-inner contact-inner">
-        <h2 class="section-title reveal"><span class="mono accent">//</span> contact</h2>
-        <p class="contact-desc reveal">¿Tienes un proyecto o quieres hablar? Encuéntrame aquí.</p>
-        <div class="contact-links reveal">
+      <div class="wrap contact-wrap">
+        <div class="section-label">05 — Contact</div>
+        <h2 class="section-title">Hablemos.</h2>
+        <p class="contact-desc">¿Tienes un proyecto, una propuesta o simplemente quieres hablar de IT? Aquí me tienes.</p>
+        <div class="contact-cards">
           <a href="https://www.linkedin.com/in/oliver-corral/" target="_blank" rel="noopener" class="contact-card">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            <div>
-              <div class="contact-name">LinkedIn</div>
-              <div class="contact-sub">oliver-corral</div>
+            <div class="cc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22">
+                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
             </div>
+            <div class="cc-info">
+              <div class="cc-name">LinkedIn</div>
+              <div class="cc-handle">oliver-corral</div>
+            </div>
+            <div class="cc-arrow">→</div>
           </a>
           <a href="https://github.com/9olivercdiaz8" target="_blank" rel="noopener" class="contact-card">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            <div>
-              <div class="contact-name">GitHub</div>
-              <div class="contact-sub">9olivercdiaz8</div>
+            <div class="cc-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
             </div>
+            <div class="cc-info">
+              <div class="cc-name">GitHub</div>
+              <div class="cc-handle">9olivercdiaz8</div>
+            </div>
+            <div class="cc-arrow">→</div>
           </a>
         </div>
       </div>
@@ -260,12 +337,13 @@
   </main>
 
   <footer>
-    <div class="footer-inner">
-      <span class="mono">ocd<span class="accent">.</span></span>
-      <span class="footer-right">
+    <div class="footer-wrap">
+      <span class="footer-logo">OCD<span class="dot-accent">.</span></span>
+      <div class="footer-links">
         <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener">status</a>
-        <span>· 2026</span>
-      </span>
+        <span>·</span>
+        <span>2026</span>
+      </div>
     </div>
   </footer>
 
