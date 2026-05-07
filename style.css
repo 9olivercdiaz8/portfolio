@@ -492,3 +492,29 @@ footer { border-top: 1px solid var(--border); padding: 1.5rem 2rem; }
   transition: opacity 0.2s;
 }
 .sb-link:hover { opacity: 1; }
+
+/* ===== CERTS ===== */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.cert-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.25s;
+}
+.cert-card:hover { border-color: var(--accent); }
+.cert-icon { font-size: 1.4rem; flex-shrink: 0; }
+.cert-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+.cert-issuer { font-size: 0.78rem; color: var(--muted2); font-family: 'JetBrains Mono', monospace; }
+
+@media (max-width: 600px) {
+  .certs-grid { grid-template-columns: 1fr; }
+}

@@ -29,6 +29,7 @@ const T = {
     'hl-loading': 'Cargando estado en vivo…', 'hl-backup': 'Backups diarios',
     'stat-uptime-label': 'Uptime', 'stat-disk': 'Disco', 'stat-temp': 'Temperatura',
     'sec-contact': '05 — Contacto', 'contact-h2': 'Hablemos.',
+    'sec-certs': '06 — Certificaciones', 'certs-h2': 'Formación oficial.',
     'contact-desc': '¿Tienes un proyecto, una propuesta o simplemente quieres hablar de IT? Aquí me tienes.',
   },
   ca: {
@@ -60,6 +61,7 @@ const T = {
     'hl-loading': 'Carregant estat en directe…', 'hl-backup': 'Còpies de seguretat diàries',
     'stat-uptime-label': 'Uptime', 'stat-disk': 'Disc', 'stat-temp': 'Temperatura',
     'sec-contact': '05 — Contacte', 'contact-h2': 'Parlem.',
+    'sec-certs': '06 — Certificacions', 'certs-h2': 'Formació oficial.',
     'contact-desc': "Tens un projecte, una proposta o simplement vols parlar d'IT? Aquí em tens.",
   },
   en: {
@@ -91,6 +93,7 @@ const T = {
     'hl-loading': 'Loading live status…', 'hl-backup': 'Daily backups',
     'stat-uptime-label': 'Uptime', 'stat-disk': 'Storage', 'stat-temp': 'Temperature',
     'sec-contact': '05 — Contact', 'contact-h2': "Let's talk.",
+    'sec-certs': '06 — Certifications', 'certs-h2': 'Official training.',
     'contact-desc': 'Got a project, a proposal or just want to talk about IT? I\'m here.',
   },
 };
