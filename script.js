@@ -74,3 +74,29 @@ async function fetchStatus() {
 }
 
 fetchStatus();
+
+// ===== STATUS BAR =====
+async function updateStatusBar() {
+  const dot = document.getElementById('sb-dot');
+  const text = document.getElementById('sb-text');
+  if (!dot || !text) return;
+  try {
+    const r = await fetch('https://status.olivercdiaz.com/api/status', { signal: AbortSignal.timeout(6000) });
+    if (!r.ok) throw new Error();
+    const services = await r.json();
+    const down = services.filter(s => s.status !== 'operational');
+    if (down.length === 0) {
+      dot.className = 'sb-dot up';
+      text.textContent = 'Todos los sistemas operativos';
+    } else {
+      dot.className = 'sb-dot down';
+      text.textContent = down.map(s => s.name).join(', ') + (down.length === 1 ? ' caído' : ' caídos');
+    }
+  } catch {
+    dot.className = 'sb-dot';
+    text.textContent = 'Estado no disponible';
+  }
+}
+
+updateStatusBar();
+setInterval(updateStatusBar, 60000);
