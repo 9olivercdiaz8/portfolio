@@ -100,3 +100,19 @@ async function updateStatusBar() {
 
 updateStatusBar();
 setInterval(updateStatusBar, 60000);
+
+// ===== AUTO-UPDATE (como LET Prep) =====
+let _currentVersion = null;
+
+async function checkVersion() {
+  try {
+    const r = await fetch('/version', { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+    if (!r.ok) return;
+    const { v } = await r.json();
+    if (_currentVersion === null) { _currentVersion = v; return; }
+    if (v !== _currentVersion) window.location.reload();
+  } catch {}
+}
+
+checkVersion();
+setInterval(checkVersion, 30000);
