@@ -1,163 +1,274 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oliver C. Díaz | Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oliver C. Díaz — IT & Developer</title>
+  <meta name="description" content="IT specialist y developer. Redes, sistemas Linux, automatización e infraestructura propia. Barcelona.">
+  <meta property="og:title" content="Oliver C. Díaz — IT & Developer">
+  <meta property="og:description" content="IT specialist y developer. Redes, sistemas Linux, automatización e infraestructura propia.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://olivercdiaz.com">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="pixels"></canvas>
 
-    <main>
-        <!-- Hero -->
-        <section class="hero">
-            <div class="avatar">
-                <div class="pixel-avatar"></div>
-            </div>
-            <h1>Oliver C. Díaz</h1>
-            <p class="tagline">Building cool stuff with code</p>
-            <div class="status">
-                <span class="status-dot"></span>
-                <span>Sistemas activos</span>
-            </div>
-        </section>
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">ocd<span class="accent">.</span></a>
+      <div class="nav-links">
+        <a href="#about">about</a>
+        <a href="#projects">projects</a>
+        <a href="#homelab">homelab</a>
+        <a href="#contact">contact</a>
+      </div>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="mobile-nav">
+      <a href="#about" class="mobile-link">about</a>
+      <a href="#projects" class="mobile-link">projects</a>
+      <a href="#homelab" class="mobile-link">homelab</a>
+      <a href="#contact" class="mobile-link">contact</a>
+    </div>
+  </nav>
 
-        <!-- About -->
-        <section class="about">
-            <h2>// about</h2>
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero-inner">
+        <div class="hero-tag reveal">
+          <span class="dot online"></span>
+          Barcelona, Spain
+        </div>
+        <h1 class="hero-name reveal">Oliver<br>C. Díaz</h1>
+        <p class="hero-role reveal">IT Specialist <span class="accent">&amp;</span> Developer</p>
+        <p class="hero-desc reveal">
+          Redes, Linux, automatización e infraestructura.<br>
+          Si algo se puede automatizar, lo automatizo.
+        </p>
+        <div class="hero-cta reveal">
+          <a href="#projects" class="btn-primary">Ver proyectos</a>
+          <a href="#contact" class="btn-ghost">Contacto</a>
+        </div>
+      </div>
+      <div class="hero-grid-bg"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <div class="section-inner">
+        <h2 class="section-title reveal"><span class="mono accent">//</span> about</h2>
+        <div class="about-grid">
+          <div class="about-text reveal">
             <p>
-                Developer curioso que disfruta creando desde bots de Telegram hasta
-                infraestructura de red. Me gusta automatizar cosas,
-                cacharrear con hardware y aprender haciendo.
+              Developer y especialista en IT con base en Barcelona. Me muevo entre
+              redes, sistemas Linux y automatización. Si algo se repite, escribo un
+              script. Si algo puede estar en la nube, lo pongo en casa.
             </p>
-        </section>
-
-        <!-- Projects -->
-        <section class="projects">
-            <h2>// projects</h2>
-
-            <div class="project-grid">
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <rect x="4" y="5" width="2" height="2" fill="currentColor"/>
-                            <rect x="10" y="5" width="2" height="2" fill="currentColor"/>
-                            <rect x="5" y="9" width="6" height="1" fill="currentColor"/>
-                            <rect x="4" y="10" width="1" height="1" fill="currentColor"/>
-                            <rect x="11" y="10" width="1" height="1" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>PiBot</h3>
-                    <p>Bot de Telegram para gestionar mi Raspberry Pi. Controla WireGuard, monitorea IP pública y actualiza DNS dinámico automáticamente.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Telegram API</span>
-                        <span class="tag">Raspberry Pi</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> Running
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="1" y="4" width="6" height="8" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <rect x="9" y="4" width="6" height="8" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <line x1="7" y1="8" x2="9" y2="8" stroke="currentColor" stroke-width="1"/>
-                            <rect x="3" y="6" width="2" height="2" fill="currentColor"/>
-                            <rect x="11" y="6" width="2" height="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>WireGuard VPN</h3>
-                    <p>Servidor VPN personal desplegado en Raspberry Pi. Acceso seguro a mi red desde cualquier lugar con gestión de clientes via Telegram.</p>
-                    <div class="project-tags">
-                        <span class="tag">WireGuard</span>
-                        <span class="tag">Networking</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> 2 peers connected
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1"/>
-                            <rect x="7" y="4" width="2" height="5" fill="currentColor"/>
-                            <rect x="7" y="7" width="4" height="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Dynamic DNS</h3>
-                    <p>Sistema de DNS dinámico con DuckDNS. Actualización automática cuando cambia la IP pública, integrado con el bot de Telegram.</p>
-                    <div class="project-tags">
-                        <span class="tag">DuckDNS</span>
-                        <span class="tag">Automation</span>
-                        <span class="tag">Bash</span>
-                    </div>
-                    <div class="project-status online">
-                        <span class="status-dot"></span> Synced
-                    </div>
-                </article>
-
-                <article class="project-card coming-soon">
-                    <div class="project-icon">
-                        <svg viewBox="0 0 16 16" class="pixel-icon">
-                            <rect x="2" y="2" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2"/>
-                            <rect x="7" y="5" width="2" height="4" fill="currentColor"/>
-                            <rect x="7" y="10" width="2" height="2" fill="currentColor"/>
-                        </svg>
-                    </div>
-                    <h3>Next Project</h3>
-                    <p>Siempre hay algo nuevo en el horno. Vuelve pronto para ver qué estoy construyendo.</p>
-                    <div class="project-tags">
-                        <span class="tag">???</span>
-                    </div>
-                    <div class="project-status pending">
-                        <span class="status-dot"></span> Coming soon
-                    </div>
-                </article>
+            <p>
+              Actualmente trabajo en proyectos propios y mantengo una infraestructura
+              completa en una Raspberry Pi 5 — apps, bots, VPN, DNS y backups, todo
+              corriendo 24/7.
+            </p>
+          </div>
+          <div class="about-stack reveal">
+            <div class="stack-group">
+              <span class="stack-label">Sistemas</span>
+              <div class="tags">
+                <span class="tag">Linux</span>
+                <span class="tag">Debian</span>
+                <span class="tag">systemd</span>
+                <span class="tag">Raspberry Pi</span>
+              </div>
             </div>
-        </section>
-
-        <!-- Contact -->
-        <section class="contact">
-            <h2>// contact</h2>
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/oliver-corral/" target="_blank" rel="noopener" class="contact-link">
-                    <svg viewBox="0 0 16 16" class="pixel-icon">
-                        <rect x="1" y="1" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1"/>
-                        <rect x="3" y="6" width="2" height="7" fill="currentColor"/>
-                        <rect x="3" y="3" width="2" height="2" fill="currentColor"/>
-                        <rect x="6" y="6" width="2" height="7" fill="currentColor"/>
-                        <rect x="8" y="8" width="2" height="5" fill="currentColor"/>
-                        <rect x="10" y="6" width="2" height="7" fill="currentColor"/>
-                        <rect x="6" y="6" width="6" height="2" fill="currentColor"/>
-                    </svg>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/9olivercdiaz8" target="_blank" rel="noopener" class="contact-link">
-                    <svg viewBox="0 0 16 16" class="pixel-icon">
-                        <path d="M8 1C4.13 1 1 4.13 1 8c0 3.09 2 5.71 4.78 6.64.35.06.48-.15.48-.34 0-.17-.01-.61-.01-1.2-1.95.42-2.36-.94-2.36-.94-.32-.81-.78-1.03-.78-1.03-.64-.43.05-.43.05-.43.7.05 1.07.72 1.07.72.62 1.07 1.64.76 2.04.58.06-.45.24-.76.44-.94-1.56-.18-3.2-.78-3.2-3.47 0-.77.28-1.4.72-1.89-.07-.18-.31-.89.07-1.86 0 0 .59-.19 1.93.72a6.7 6.7 0 0 1 1.76-.24c.6 0 1.2.08 1.76.24 1.34-.91 1.93-.72 1.93-.72.38.97.14 1.68.07 1.86.45.49.72 1.12.72 1.89 0 2.7-1.64 3.29-3.21 3.46.25.22.48.65.48 1.31 0 .94-.01 1.7-.01 1.93 0 .19.13.41.49.34C13 13.71 15 11.09 15 8c0-3.87-3.13-7-7-7z" fill="currentColor"/>
-                    </svg>
-                    <span>GitHub</span>
-                </a>
+            <div class="stack-group">
+              <span class="stack-label">Red</span>
+              <div class="tags">
+                <span class="tag">WireGuard</span>
+                <span class="tag">Cloudflare</span>
+                <span class="tag">Pi-hole</span>
+                <span class="tag">Nginx</span>
+              </div>
             </div>
-        </section>
+            <div class="stack-group">
+              <span class="stack-label">Código</span>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">React</span>
+                <span class="tag">Bash</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Footer -->
-        <footer>
-            <p>Built with pixels & coffee</p>
-            <p class="footer-year">2026</p>
-        </footer>
-    </main>
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <div class="section-inner">
+        <h2 class="section-title reveal"><span class="mono accent">//</span> projects</h2>
+        <p class="section-sub reveal">Proyectos reales, todos en producción.</p>
+        <div class="projects-grid">
 
-    <script src="script.js"></script>
+          <article class="project-card reveal">
+            <div class="card-top">
+              <span class="card-icon">🎓</span>
+              <div class="card-status live">
+                <span class="dot online"></span> Live
+              </div>
+            </div>
+            <h3>LET Prep</h3>
+            <p>App de estudio para el examen de profesores de Filipinas. PWA con SRS, exámenes mock, biblioteca de PDFs, notas y fichas de estudio generadas por IA.</p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Hono</span>
+              <span class="tag">PWA</span>
+            </div>
+            <a href="https://let.olivercdiaz.com" target="_blank" rel="noopener" class="card-link">let.olivercdiaz.com →</a>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="card-top">
+              <span class="card-icon">🤖</span>
+              <div class="card-status live">
+                <span class="dot online"></span> Live
+              </div>
+            </div>
+            <h3>PiBot</h3>
+            <p>Bot de Telegram para gestionar la Raspberry Pi. Control de WireGuard, DNS dinámico, monitorización de IP y backups automáticos a Google Drive.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Telegram API</span>
+              <span class="tag">Linux</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="card-top">
+              <span class="card-icon">🎮</span>
+              <div class="card-status live">
+                <span class="dot online"></span> Live
+              </div>
+            </div>
+            <h3>S&amp;F Bot</h3>
+            <p>Bot autónomo para el juego Shakes &amp; Fidget. Gestión de arena, quests, herrería, mascotas y subterráneo. Más de 5.000 líneas de Python.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Game API</span>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="card-top">
+              <span class="card-icon">📊</span>
+              <div class="card-status live">
+                <span class="dot online"></span> Live
+              </div>
+            </div>
+            <h3>Status Page</h3>
+            <p>Página de estado en tiempo real para mis servicios. WebSocket para actualizaciones live, historial de uptime de 90 días y soporte i18n.</p>
+            <div class="tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">WebSocket</span>
+              <span class="tag">Express</span>
+            </div>
+            <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener" class="card-link">status.olivercdiaz.com →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMELAB -->
+    <section class="section section-alt" id="homelab">
+      <div class="section-inner">
+        <h2 class="section-title reveal"><span class="mono accent">//</span> homelab</h2>
+        <p class="section-sub reveal">Raspberry Pi 5 · 8GB RAM · Debian 13 · 24/7</p>
+        <div class="homelab-grid">
+          <div class="homelab-services reveal" id="live-services">
+            <div class="service-row loading">
+              <span class="service-name">Cargando estado en vivo...</span>
+            </div>
+          </div>
+          <div class="homelab-specs reveal">
+            <div class="spec-card">
+              <div class="spec-value accent">8GB</div>
+              <div class="spec-label">RAM</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-value accent">117GB</div>
+              <div class="spec-label">Almacenamiento</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-value accent">49°C</div>
+              <div class="spec-label">Temperatura</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-value accent" id="uptime-days">—</div>
+              <div class="spec-label">Uptime</div>
+            </div>
+          </div>
+        </div>
+        <div class="homelab-stack reveal">
+          <span class="hl-tag">WireGuard VPN</span>
+          <span class="hl-tag">Pi-hole DNS</span>
+          <span class="hl-tag">Cloudflare Tunnel</span>
+          <span class="hl-tag">PM2</span>
+          <span class="hl-tag">fail2ban</span>
+          <span class="hl-tag">logrotate</span>
+          <span class="hl-tag">rkhunter</span>
+          <span class="hl-tag">Backups diarios</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="section-inner contact-inner">
+        <h2 class="section-title reveal"><span class="mono accent">//</span> contact</h2>
+        <p class="contact-desc reveal">¿Tienes un proyecto o quieres hablar? Encuéntrame aquí.</p>
+        <div class="contact-links reveal">
+          <a href="https://www.linkedin.com/in/oliver-corral/" target="_blank" rel="noopener" class="contact-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <div>
+              <div class="contact-name">LinkedIn</div>
+              <div class="contact-sub">oliver-corral</div>
+            </div>
+          </a>
+          <a href="https://github.com/9olivercdiaz8" target="_blank" rel="noopener" class="contact-card">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="24"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <div>
+              <div class="contact-name">GitHub</div>
+              <div class="contact-sub">9olivercdiaz8</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span class="mono">ocd<span class="accent">.</span></span>
+      <span class="footer-right">
+        <a href="https://status.olivercdiaz.com" target="_blank" rel="noopener">status</a>
+        <span>· 2026</span>
+      </span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
