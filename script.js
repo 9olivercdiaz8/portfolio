@@ -160,36 +160,17 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 
-// ===== LIVE STATUS (Uptime Kuma — status.olivercdiaz.com) =====
-const ICONS = { 1: '🌐', 2: '🎓', 4: '🔐' };
-const SLUG = 'main';
-const KUMA = 'https://status.olivercdiaz.com';
+// ===== LIVE STATUS (homelab + status bar) =====
+const ICONS = { let: '🎓', portfolio: '🌐', pihole: '🛡️', remedy: '🎫' };
+const NAMES = { let: 'LET Prep', portfolio: 'olivercdiaz.com', pihole: 'Pi-hole DNS', remedy: 'Remedy Bot' };
 
 async function fetchStatus() {
   const hl = document.getElementById('hl-services');
   const t = T[window._lang] || T.en;
   try {
-    const [pageRes, hbRes] = await Promise.all([
-      fetch(`${KUMA}/api/status-page/${SLUG}`, { signal: AbortSignal.timeout(7000) }),
-      fetch(`${KUMA}/api/status-page/heartbeat/${SLUG}`, { signal: AbortSignal.timeout(7000) })
-    ]);
-    if (!pageRes.ok || !hbRes.ok) throw new Error();
-    const page = await pageRes.json();
-    const hb = await hbRes.json();
-
-    const monitors = page.publicGroupList.flatMap(g => g.monitorList);
-    const services = monitors.map(m => {
-      const beats = hb.heartbeatList[m.id] || [];
-      const last = beats[beats.length - 1];
-      const uptime = hb.uptimeList[`${m.id}_24`] || 100;
-      return {
-        id: m.id,
-        name: m.name,
-        status: last && last.status === 1 ? 'operational' : 'down',
-        uptime: parseFloat(uptime),
-        responseTime: last ? last.ping : null
-      };
-    });
+    const r = await fetch('https://status.olivercdiaz.com/api/status', { signal: AbortSignal.timeout(7000) });
+    if (!r.ok) throw new Error();
+    const services = await r.json();
 
     if (hl) {
       hl.innerHTML = services.map(s => {
@@ -197,7 +178,7 @@ async function fetchStatus() {
         return `<div class="hl-row">
           <div class="hl-left-row">
             <span class="hl-row-icon">${ICONS[s.id] || '⚡'}</span>
-            <span class="hl-row-name">${s.name}</span>
+            <span class="hl-row-name">${NAMES[s.id] || s.name}</span>
           </div>
           <div class="hl-row-right">
             ${s.responseTime ? `<span class="hl-rt">${s.responseTime}ms</span>` : ''}
@@ -210,10 +191,11 @@ async function fetchStatus() {
       }).join('');
     }
 
-    const avgUptime = services.reduce((a, s) => a + s.uptime, 0) / services.length;
+    const avgUptime = services.reduce((a, s) => a + parseFloat(s.uptime || 100), 0) / services.length;
     const statUp = document.getElementById('stat-uptime');
     if (statUp) statUp.textContent = avgUptime.toFixed(1) + '%';
 
+    // Status bar
     const down = services.filter(s => s.status !== 'operational');
     const dot = document.getElementById('sb-dot');
     const sbText = document.getElementById('sb-text');
@@ -224,7 +206,7 @@ async function fetchStatus() {
       } else {
         dot.className = 'sb-dot down';
         const word = down.length === 1 ? t['sb-down'] : t['sb-down-pl'];
-        sbText.textContent = down.map(s => s.name).join(', ') + ' ' + word;
+        sbText.textContent = down.map(s => NAMES[s.id] || s.name).join(', ') + ' ' + word;
       }
     }
   } catch {
@@ -233,13 +215,9 @@ async function fetchStatus() {
     if (dot) dot.className = 'sb-dot';
     if (sbText) sbText.textContent = t['sb-unavail'];
 
-    if (hl) hl.innerHTML = [
-      { id: 1, icon: '🌐', name: 'olivercdiaz.com' },
-      { id: 2, icon: '🎓', name: 'let.olivercdiaz.com' },
-      { id: 4, icon: '🔐', name: 'vault.olivercdiaz.com' }
-    ].map(s => `
+    if (hl) hl.innerHTML = ['let','portfolio','pihole','remedy'].map(id => `
       <div class="hl-row">
-        <div class="hl-left-row"><span class="hl-row-icon">${s.icon}</span><span class="hl-row-name">${s.name}</span></div>
+        <div class="hl-left-row"><span class="hl-row-icon">${ICONS[id]}</span><span class="hl-row-name">${NAMES[id]}</span></div>
         <div class="hl-row-right"><span class="hl-badge up"><span class="pulse-dot sm"></span>OK</span></div>
       </div>`).join('');
   }
