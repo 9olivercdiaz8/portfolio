@@ -284,6 +284,39 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--border); color: var(--muted);
 }
 
+
+/* ===== EXPERIENCE ENHANCEMENTS ===== */
+.tl-badge {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  font-size: 0.68rem; font-family: "JetBrains Mono", monospace;
+  padding: 0.15rem 0.5rem; border-radius: 4px;
+  background: var(--green-dim); color: var(--green);
+  border: 1px solid rgba(52,211,153,0.3);
+  vertical-align: middle; margin-left: 0.5rem;
+}
+.tl-metrics {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;
+}
+.tl-metric {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.73rem; padding: 0.25rem 0.65rem;
+  border-radius: 6px; border: 1px solid var(--accent-dim);
+  color: var(--accent2); background: var(--accent-dim);
+}
+.tl-bullets {
+  list-style: none; padding: 0; margin: 0 0 0.8rem 0;
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.tl-bullets li {
+  color: var(--muted2); font-size: 0.88rem; line-height: 1.6;
+  display: flex; gap: 0.55rem; align-items: flex-start;
+}
+.tl-bullets li::before {
+  content: "→"; color: var(--accent); flex-shrink: 0;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem; margin-top: 0.15rem;
+}
+
 /* ===== PROJECTS ===== */
 .projects-grid {
   display: grid; grid-template-columns: repeat(2, 1fr);
