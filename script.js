@@ -14,14 +14,27 @@ const T = {
     'about-p2': 'Si algo se repite más de dos veces, escribo un script. Si algo puede estar siempre disponible, lo levanto en mi Pi.',
     'skill-sys': 'Sistemas & Red', 'skill-code': 'Código',
     'sec-exp': '02 — Experiencia', 'exp-h2': 'Donde he trabajado.',
-    'irium-role': 'Help Desk & IT Consultant · Dept. Educació Catalunya', 'irium-date': '2024 — Actual',
-    'irium-desc': "Consultoría IT para el Departament d'Educació de la Generalitat de Catalunya.",
-    'netland-role': 'Técnico IT', 'netland-desc': 'Instalación y mantenimiento de redes, soporte técnico y administración de infraestructura informática.',
-    'plastic-role': 'IT & Sistemas', 'plastic-desc': 'Mantenimiento de sistemas internos, soporte a usuarios y gestión de equipos e infraestructura de red.',
+    'tl-now': 'Actual',
+    'irium-role': 'Helpdesk Agent · Dept. Educació de la Generalitat de Catalunya', 'irium-date': 'Sep 2024 — Actual',
+    'irium-b1': 'Helpdesk presencial y remoto para miles de usuarios del sistema educativo público de Catalunya — profesores, directores y personal administrativo.',
+    'irium-b2': 'Resolución de incidencias Nivel 1 con herramienta Remedy ITSM en entorno de administración pública de gran volumen.',
+    'irium-b3': 'Escalado y seguimiento de incidencias técnicas complejas a niveles superiores de soporte.',
+    'netland-role': 'Técnico IT / Helpdesk', 'netland-date': 'Ene 2023 — May 2024',
+    'netland-m1': '20–30 tickets/semana', 'netland-m2': '−20% costos Internet', 'netland-m3': '+8 hoteles',
+    'netland-b1': 'Resolución de 20–30 incidencias semanales (Niveles 1–3) con soluciones técnicas avanzadas.',
+    'netland-b2': 'Implementación de gestión de ancho de banda y DNS/monitorización en entornos hoteleros → reducción del 20% en costos de Internet.',
+    'netland-b3': 'Mantenimiento de redes y equipos en más de 8 hoteles y cliente corporativo Club Atlètic Natació Barcelona.',
+    'netland-b4': 'Administración IT para retransmisiones de waterpolo en directo del club deportivo.',
+    'plastic-role': 'Técnico Informático', 'plastic-date': 'Feb 2021 — Abr 2022',
+    'plastic-m1': '−25% tiempo de resolución', 'plastic-m2': '−10% downtime',
+    'plastic-b1': 'Reducción del 25% en el tiempo medio de resolución de problemas mediante flujos de trabajo optimizados.',
+    'plastic-b2': 'Optimización de Active Directory y VMware con prácticas recomendadas para mayor estabilidad y rendimiento.',
+    'plastic-b3': 'Mantenimiento preventivo que redujo el downtime de servicios en un 10%.',
+    'plastic-b4': 'Gestión de políticas de red para seguridad y rendimiento óptimos, y capacitación de usuarios.',
     'sec-proj': '03 — Proyectos', 'proj-h2': 'Lo que he construido.', 'proj-sub': 'Proyectos reales, todos en producción.',
     'let-desc': 'PWA de estudio para el examen de profesores de Filipinas. SRS (repetición espaciada), exámenes mock, biblioteca de 760MB de PDFs, notas personales y 119 fichas de estudio por tema.',
     'pibot-desc': 'Bot de Telegram para gestionar la Raspberry Pi remotamente. Controla WireGuard, monitorea IP pública, actualiza DNS dinámico y hace backups automáticos a Google Drive.',
-    'sf-desc': 'Bot autónomo para Shakes & Fidget. Gestiona arena, quests, herrería, mascotas y subterráneo. +5.000 líneas de Python con estrategias matemáticas propias para cada modo de juego.',
+    'sf-desc': 'Bot autónomo para Shakes & Fidget. Gestiona expediciones, fortaleza, submundo y arena 24/7, con control remoto por Telegram. +5.000 líneas de Python con estrategias matemáticas propias para cada modo de juego.',
     'status-desc': 'Monitor de estado en tiempo real para mis servicios. WebSocket para updates live sin recargar, historial de uptime de 90 días y soporte en 3 idiomas.',
     'remedy-desc': 'Bot de automatización completa para Remedy ITSM. Sin API — usa scraping de navegador para leer, categorizar y resolver incidencias automáticamente. Genera respuestas en el idioma correcto listas para pegar, con umbral de confianza configurable, detección de VIPs y kill switch de seguridad.',
     'sec-hl': '04 — Homelab', 'hl-h2': 'Infraestructura propia.',
@@ -46,14 +59,27 @@ const T = {
     'about-p2': "Si alguna cosa es repeteix més de dues vegades, escric un script. Si alguna cosa pot estar sempre disponible, la munto a la meva Pi.",
     'skill-sys': 'Sistemes & Xarxa', 'skill-code': 'Codi',
     'sec-exp': '02 — Experiència', 'exp-h2': 'On he treballat.',
-    'irium-role': 'Help Desk & IT Consultant · Dept. Educació Catalunya', 'irium-date': '2024 — Actual',
-    'irium-desc': "Consultoria IT per al Departament d'Educació de la Generalitat de Catalunya.",
-    'netland-role': 'Tècnic IT', 'netland-desc': "Instal·lació i manteniment de xarxes, suport tècnic i administració d'infraestructura informàtica.",
-    'plastic-role': 'IT & Sistemes', 'plastic-desc': "Manteniment de sistemes interns, suport als usuaris i gestió d'equips i infraestructura de xarxa.",
+    'tl-now': 'Actual',
+    'irium-role': "Helpdesk Agent · Dept. d'Educació de la Generalitat de Catalunya", 'irium-date': 'Set 2024 — Actual',
+    'irium-b1': "Helpdesk presencial i remot per a milers d'usuaris del sistema educatiu públic de Catalunya — professors, directors i personal administratiu.",
+    'irium-b2': "Resolució d'incidències Nivell 1 amb l'eina Remedy ITSM en un entorn d'administració pública de gran volum.",
+    'irium-b3': "Escalat i seguiment d'incidències tècniques complexes a nivells superiors de suport.",
+    'netland-role': 'Tècnic IT / Helpdesk', 'netland-date': 'Gen 2023 — Mai 2024',
+    'netland-m1': '20–30 tiquets/setmana', 'netland-m2': '−20% costos Internet', 'netland-m3': '+8 hotels',
+    'netland-b1': "Resolució de 20–30 incidències setmanals (Nivells 1–3) amb solucions tècniques avançades.",
+    'netland-b2': "Implementació de gestió d'ample de banda i DNS/monitorització en entorns hotelers → reducció del 20% en costos d'Internet.",
+    'netland-b3': "Manteniment de xarxes i equips en més de 8 hotels i el client corporatiu Club Atlètic Natació Barcelona.",
+    'netland-b4': "Administració IT per a retransmissions de waterpolo en directe del club esportiu.",
+    'plastic-role': 'Tècnic Informàtic', 'plastic-date': 'Feb 2021 — Abr 2022',
+    'plastic-m1': '−25% temps de resolució', 'plastic-m2': '−10% downtime',
+    'plastic-b1': "Reducció del 25% en el temps mitjà de resolució de problemes mitjançant fluxos de treball optimitzats.",
+    'plastic-b2': "Optimització d'Active Directory i VMware amb pràctiques recomanades per a més estabilitat i rendiment.",
+    'plastic-b3': "Manteniment preventiu que va reduir el downtime de serveis en un 10%.",
+    'plastic-b4': "Gestió de polítiques de xarxa per a seguretat i rendiment òptims, i formació d'usuaris.",
     'sec-proj': '03 — Projectes', 'proj-h2': 'El que he construït.', 'proj-sub': 'Projectes reals, tots en producció.',
     'let-desc': "PWA d'estudi per a l'examen de professors de Filipines. SRS (repetició espaiadal), exàmens simulats, biblioteca de 760MB de PDFs, notes personals i 119 fitxes d'estudi per tema.",
     'pibot-desc': "Bot de Telegram per gestionar la Raspberry Pi remotament. Controla WireGuard, monitoritza la IP pública, actualitza el DNS dinàmic i fa còpies de seguretat automàtiques a Google Drive.",
-    'sf-desc': "Bot autònom per a Shakes & Fidget. Gestiona l'arena, quests, ferreria, mascotes i subterrani. +5.000 línies de Python amb estratègies matemàtiques pròpies per a cada mode de joc.",
+    'sf-desc': "Bot autònom per a Shakes & Fidget. Gestiona expedicions, fortalesa, submón i arena 24/7, amb control remot per Telegram. +5.000 línies de Python amb estratègies matemàtiques pròpies per a cada mode de joc.",
     'status-desc': "Monitor d'estat en temps real per als meus serveis. WebSocket per a actualitzacions en directe sense recarregar, historial d'uptime de 90 dies i suport en 3 idiomes.",
     'remedy-desc': "Bot d'automatització completa per a Remedy ITSM. Sense API — utilitza scraping del navegador per llegir, categoritzar i resoldre incidències automàticament. Genera respostes en l'idioma correcte llestes per enganxar, amb llindar de confiança configurable, detecció de VIPs i kill switch de seguretat.",
     'sec-hl': '04 — Homelab', 'hl-h2': 'Infraestructura pròpia.',
@@ -78,14 +104,27 @@ const T = {
     'about-p2': 'If something repeats more than twice, I write a script. If something can always be available, I run it on my Pi.',
     'skill-sys': 'Systems & Network', 'skill-code': 'Code',
     'sec-exp': '02 — Experience', 'exp-h2': "Where I've worked.",
-    'irium-role': 'Help Desk & IT Consultant · Dept. Educació Catalunya', 'irium-date': '2024 — Present',
-    'irium-desc': "IT consulting for the Department of Education of the Generalitat de Catalunya.",
-    'netland-role': 'IT Technician', 'netland-desc': 'Network installation and maintenance, technical support and IT infrastructure administration.',
-    'plastic-role': 'IT & Systems', 'plastic-desc': 'Internal systems maintenance, user support and management of equipment and network infrastructure.',
+    'tl-now': 'Now',
+    'irium-role': 'Helpdesk Agent · Dept. of Education, Generalitat de Catalunya', 'irium-date': 'Sep 2024 — Present',
+    'irium-b1': "On-site and remote helpdesk for thousands of users of Catalonia's public education system — teachers, principals and administrative staff.",
+    'irium-b2': 'Level 1 incident resolution with Remedy ITSM in a high-volume public administration environment.',
+    'irium-b3': 'Escalation and follow-up of complex technical incidents to higher support tiers.',
+    'netland-role': 'IT Technician / Helpdesk', 'netland-date': 'Jan 2023 — May 2024',
+    'netland-m1': '20–30 tickets/week', 'netland-m2': '−20% Internet costs', 'netland-m3': '+8 hotels',
+    'netland-b1': 'Resolution of 20–30 weekly incidents (Levels 1–3) with advanced technical solutions.',
+    'netland-b2': 'Implemented bandwidth management and DNS/monitoring in hotel environments → 20% reduction in Internet costs.',
+    'netland-b3': 'Network and equipment maintenance across 8+ hotels and corporate client Club Atlètic Natació Barcelona.',
+    'netland-b4': 'IT administration for live water polo broadcasts of the sports club.',
+    'plastic-role': 'IT Technician', 'plastic-date': 'Feb 2021 — Apr 2022',
+    'plastic-m1': '−25% resolution time', 'plastic-m2': '−10% downtime',
+    'plastic-b1': 'Reduced average problem resolution time by 25% through optimized workflows.',
+    'plastic-b2': 'Optimized Active Directory and VMware following best practices for greater stability and performance.',
+    'plastic-b3': 'Preventive maintenance that cut service downtime by 10%.',
+    'plastic-b4': 'Network policy management for optimal security and performance, plus user training.',
     'sec-proj': '03 — Projects', 'proj-h2': "What I've built.", 'proj-sub': 'Real projects, all in production.',
     'let-desc': 'Study PWA for the Philippine Teachers Licensure Exam. SRS (spaced repetition), mock exams, 760MB PDF library, personal notes and 119 topic study cards.',
     'pibot-desc': 'Telegram bot to manage the Raspberry Pi remotely. Controls WireGuard, monitors public IP, updates dynamic DNS and runs automatic backups to Google Drive.',
-    'sf-desc': 'Autonomous bot for Shakes & Fidget. Manages arena, quests, blacksmith, pets and dungeon. 5,000+ lines of Python with custom mathematical strategies for each game mode.',
+    'sf-desc': 'Autonomous bot for Shakes & Fidget. Runs expeditions, fortress, underworld and arena 24/7, with remote control via Telegram. 5,000+ lines of Python with custom mathematical strategies for each game mode.',
     'status-desc': 'Real-time status monitor for my services. WebSocket for live updates without reloading, 90-day uptime history and support in 3 languages.',
     'remedy-desc': 'Full automation bot for Remedy ITSM. No API — uses browser scraping to read, categorize and automatically resolve tickets. Generates ready-to-paste responses in the correct language, with configurable confidence threshold, VIP detection and kill switch.',
     'sec-hl': '04 — Homelab', 'hl-h2': 'Own infrastructure.',
@@ -101,7 +140,8 @@ const T = {
 function detectLang() {
   const l = navigator.language || 'es';
   if (l.startsWith('ca')) return 'ca';
-  return 'es';
+  if (l.startsWith('es')) return 'es';
+  return 'en';
 }
 
 function applyLang(lang) {
@@ -127,6 +167,18 @@ function saveLang(l) { localStorage.setItem('portfolio-lang', l); }
 
 const initialLang = getSavedLang() || detectLang();
 applyLang(initialLang);
+
+// ===== LANG SWITCHER =====
+const langBtns = document.querySelectorAll('.lang-switch button');
+function markLang(l) {
+  langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+}
+langBtns.forEach(b => b.addEventListener('click', () => {
+  applyLang(b.dataset.lang);
+  saveLang(b.dataset.lang);
+  markLang(b.dataset.lang);
+}));
+markLang(initialLang);
 
 
 // ===== NAV SCROLL =====

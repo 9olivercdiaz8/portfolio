@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260610">
 </head>
 <body>
 
@@ -26,6 +26,9 @@
         <a href="#projects" data-i18n="nav-projects">Proyectos</a>
         <a href="#homelab" data-i18n="nav-homelab">Homelab</a>
         <a href="#contact" data-i18n="nav-contact">Contacto</a>
+      </div>
+      <div class="lang-switch" aria-label="Idioma / Language">
+        <button type="button" data-lang="es">ES</button><button type="button" data-lang="ca">CA</button><button type="button" data-lang="en">EN</button>
       </div>
       <button id="burger" class="burger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -80,7 +83,7 @@
             <div class="term-line"><span class="term-prompt">$</span> uptime</div>
             <div class="term-line term-out" id="term-uptime">4 days, 8 hours</div>
             <div class="term-line"><span class="term-prompt">$</span> systemctl list-units --state=running | wc -l</div>
-            <div class="term-line term-out">14</div>
+            <div class="term-line term-out">47</div>
             <div class="term-line"><span class="term-prompt">$</span> vcgencmd measure_temp</div>
             <div class="term-line term-out" id="term-temp">temp=49.4'C</div>
             <div class="term-line"><span class="term-prompt">$</span> <span class="term-cursor">▋</span></div>
@@ -139,15 +142,15 @@
             <div class="tl-content">
               <div class="tl-header">
                 <div>
-                  <div class="tl-company">IRIUM <span class="tl-badge"><span class="pulse-dot sm"></span>Actual</span></div>
-                  <div class="tl-role">Helpdesk Agent &middot; Dept. Educaci&oacute; de la Generalitat de Catalunya</div>
+                  <div class="tl-company">IRIUM <span class="tl-badge"><span class="pulse-dot sm"></span><span data-i18n="tl-now">Actual</span></span></div>
+                  <div class="tl-role" data-i18n="irium-role">Helpdesk Agent &middot; Dept. Educaci&oacute; de la Generalitat de Catalunya</div>
                 </div>
-                <div class="tl-date">Sep 2024 &mdash; Actual</div>
+                <div class="tl-date" data-i18n="irium-date">Sep 2024 &mdash; Actual</div>
               </div>
               <ul class="tl-bullets">
-                <li>Helpdesk presencial y remoto para miles de usuarios del sistema educativo p&uacute;blico de Catalunya &mdash; profesores, directores y personal administrativo.</li>
-                <li>Resoluci&oacute;n de incidencias Nivel 1 con herramienta Remedy ITSM en entorno de administraci&oacute;n p&uacute;blica de gran volumen.</li>
-                <li>Escalado y seguimiento de incidencias t&eacute;cnicas complejas a niveles superiores de soporte.</li>
+                <li data-i18n="irium-b1">Helpdesk presencial y remoto para miles de usuarios del sistema educativo p&uacute;blico de Catalunya &mdash; profesores, directores y personal administrativo.</li>
+                <li data-i18n="irium-b2">Resoluci&oacute;n de incidencias Nivel 1 con herramienta Remedy ITSM en entorno de administraci&oacute;n p&uacute;blica de gran volumen.</li>
+                <li data-i18n="irium-b3">Escalado y seguimiento de incidencias t&eacute;cnicas complejas a niveles superiores de soporte.</li>
               </ul>
               <div class="tl-tags">
                 <span>IT Support</span><span>Helpdesk</span><span>Remedy ITSM</span><span>Windows</span><span>Administraci&oacute;n p&uacute;blica</span>
@@ -161,20 +164,20 @@
               <div class="tl-header">
                 <div>
                   <div class="tl-company">Netland SL</div>
-                  <div class="tl-role">T&eacute;cnico IT / Helpdesk</div>
+                  <div class="tl-role" data-i18n="netland-role">T&eacute;cnico IT / Helpdesk</div>
                 </div>
-                <div class="tl-date">Ene 2023 &mdash; May 2024</div>
+                <div class="tl-date" data-i18n="netland-date">Ene 2023 &mdash; May 2024</div>
               </div>
               <div class="tl-metrics">
-                <span class="tl-metric">20&ndash;30 tickets/semana</span>
-                <span class="tl-metric">&minus;20% costos Internet</span>
-                <span class="tl-metric">+8 hoteles</span>
+                <span class="tl-metric" data-i18n="netland-m1">20&ndash;30 tickets/semana</span>
+                <span class="tl-metric" data-i18n="netland-m2">&minus;20% costos Internet</span>
+                <span class="tl-metric" data-i18n="netland-m3">+8 hoteles</span>
               </div>
               <ul class="tl-bullets">
-                <li>Resoluci&oacute;n de 20&ndash;30 incidencias semanales (Niveles 1&ndash;3) con soluciones t&eacute;cnicas avanzadas.</li>
-                <li>Implementaci&oacute;n de gesti&oacute;n de ancho de banda y DNS/monitorizaci&oacute;n en entornos hoteleros &rarr; reducci&oacute;n del 20% en costos de Internet.</li>
-                <li>Mantenimiento de redes y equipos en m&aacute;s de 8 hoteles y cliente corporativo Club Atl&egrave;tic Nataci&oacute; Barcelona.</li>
-                <li>Administraci&oacute;n IT para retransmisiones de waterpolo en directo del club deportivo.</li>
+                <li data-i18n="netland-b1">Resoluci&oacute;n de 20&ndash;30 incidencias semanales (Niveles 1&ndash;3) con soluciones t&eacute;cnicas avanzadas.</li>
+                <li data-i18n="netland-b2">Implementaci&oacute;n de gesti&oacute;n de ancho de banda y DNS/monitorizaci&oacute;n en entornos hoteleros &rarr; reducci&oacute;n del 20% en costos de Internet.</li>
+                <li data-i18n="netland-b3">Mantenimiento de redes y equipos en m&aacute;s de 8 hoteles y cliente corporativo Club Atl&egrave;tic Nataci&oacute; Barcelona.</li>
+                <li data-i18n="netland-b4">Administraci&oacute;n IT para retransmisiones de waterpolo en directo del club deportivo.</li>
               </ul>
               <div class="tl-tags">
                 <span>Networking</span><span>Helpdesk</span><span>DNS</span><span>Bandwidth Mgmt</span><span>Hardware</span><span>Hoteles</span>
@@ -188,19 +191,19 @@
               <div class="tl-header">
                 <div>
                   <div class="tl-company">Plasticband</div>
-                  <div class="tl-role">T&eacute;cnico Inform&aacute;tico</div>
+                  <div class="tl-role" data-i18n="plastic-role">T&eacute;cnico Inform&aacute;tico</div>
                 </div>
-                <div class="tl-date">Feb 2021 &mdash; Abr 2022</div>
+                <div class="tl-date" data-i18n="plastic-date">Feb 2021 &mdash; Abr 2022</div>
               </div>
               <div class="tl-metrics">
-                <span class="tl-metric">&minus;25% tiempo de resoluci&oacute;n</span>
-                <span class="tl-metric">&minus;10% downtime</span>
+                <span class="tl-metric" data-i18n="plastic-m1">&minus;25% tiempo de resoluci&oacute;n</span>
+                <span class="tl-metric" data-i18n="plastic-m2">&minus;10% downtime</span>
               </div>
               <ul class="tl-bullets">
-                <li>Reducci&oacute;n del 25% en el tiempo medio de resoluci&oacute;n de problemas mediante flujos de trabajo optimizados.</li>
-                <li>Optimizaci&oacute;n de Active Directory y VMware con pr&aacute;cticas recomendadas para mayor estabilidad y rendimiento.</li>
-                <li>Mantenimiento preventivo que redujo el downtime de servicios en un 10%.</li>
-                <li>Gesti&oacute;n de pol&iacute;ticas de red para seguridad y rendimiento &oacute;ptimos, y capacitaci&oacute;n de usuarios.</li>
+                <li data-i18n="plastic-b1">Reducci&oacute;n del 25% en el tiempo medio de resoluci&oacute;n de problemas mediante flujos de trabajo optimizados.</li>
+                <li data-i18n="plastic-b2">Optimizaci&oacute;n de Active Directory y VMware con pr&aacute;cticas recomendadas para mayor estabilidad y rendimiento.</li>
+                <li data-i18n="plastic-b3">Mantenimiento preventivo que redujo el downtime de servicios en un 10%.</li>
+                <li data-i18n="plastic-b4">Gesti&oacute;n de pol&iacute;ticas de red para seguridad y rendimiento &oacute;ptimos, y capacitaci&oacute;n de usuarios.</li>
               </ul>
               <div class="tl-tags">
                 <span>Active Directory</span><span>VMware</span><span>Windows Server</span><span>Redes</span><span>Soporte</span>
@@ -251,7 +254,7 @@
               <div class="pc-badge live"><span class="pulse-dot sm"></span>Live</div>
             </div>
             <h3>S&amp;F Bot</h3>
-            <p data-i18n="sf-desc">Bot autónomo para Shakes &amp; Fidget. Gestiona arena, quests, herrería, mascotas y subterráneo. +5.000 líneas de Python con estrategias matemáticas propias para cada modo de juego.</p>
+            <p data-i18n="sf-desc">Bot autónomo para Shakes &amp; Fidget. Gestiona expediciones, fortaleza, submundo y arena 24/7, con control remoto por Telegram. +5.000 líneas de Python con estrategias matemáticas propias para cada modo de juego.</p>
             <div class="pc-tags">
               <span>Python</span><span>Automation</span><span>Game API</span>
             </div>
@@ -306,7 +309,6 @@
               <span>Cloudflare Tunnel</span>
               <span>fail2ban</span>
               <span>Docker</span>
-              <span>Uptime Kuma</span>
               <span>Vaultwarden</span>
               <span>PM2</span>
               <span>rkhunter</span>
@@ -424,6 +426,6 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260610"></script>
 </body>
 </html>
